@@ -4,9 +4,9 @@ import { StyleSheet, Text, View } from 'react-native';
 // Icons: https://material.io/tools/icons/
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
 import { Button, ButtonGroup, Icon, Header, List, ListItem } from 'react-native-elements';
-// https://reactnavigation.org/docs/en/tab-based-navigation.html
+// Tab Navigation: https://reactnavigation.org/docs/en/tab-based-navigation.html
 import { createBottomTabNavigator } from 'react-navigation';
-// https://github.com/cssivision/react-native-qrcode
+// QR Code Scanner: https://github.com/cssivision/react-native-qrcode
 import QRCode from 'react-native-qrcode';
 
 
@@ -138,32 +138,15 @@ export default createBottomTabNavigator(
           iconName = `contacts`;
         }
 
-        // You can return any component that you like here! We usually use an
-        // icon component from react-native-vector-icons
+        // Return standard Icon component from react-native-elements
         return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
       },
     }),
     // Menu colors
     // tabBarOptions: {
-    //   // Color of icon tints, defaults to native defaults
+    //   // Color of icon tints, defaults to native OS color defaults
     //   activeTintColor: '#007AFF', // #007AFF is iOS active color
     //   inactiveTintColor: 'gray',
     // },
   }
 );
-
-
-// By Brendon: This stylesheet causes errors with the provided Expo blank function
-// Used with the React Native Elements header
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   footer: {
-//     flex: 30,
-//   }
-// });
