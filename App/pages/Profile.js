@@ -6,6 +6,10 @@ import { StyleSheet, Text, TextInput, View, Alert, Linking, Dimensions, LayoutAn
 import { Button, ButtonGroup, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 //
 
+import { connect } from 'react-redux';
+
+import { set as setProfile } from '../redux/profile/actions';
+
 // Profile Tab
 class Profile extends React.Component {
 
@@ -13,7 +17,17 @@ state = {
   name: '',
 }
 
+  componentDidMount() {
+    setTimeout(() => {
+      console.log('im going to change things');
+      this.props.dispatch(setProfile({
+        name: 'real name'
+      }))
+    }, 5000);
+  }
+
   render() {
+    console.log(this.props);
 
     return (
       <View>
@@ -32,4 +46,4 @@ state = {
   }
 }
 
-export default Profile;
+export default connect(state => state)(Profile);

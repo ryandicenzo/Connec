@@ -15,6 +15,7 @@ import Store from './redux/store';
 
 // Import my pages
 import Profile from './pages/Profile';
+import Connec from './pages/Connec';
 
 
 class User {
@@ -38,35 +39,6 @@ class User {
 }
 
 homeuser = new User('Ryan', 'http://www.facebook.com', 'dicenzoryan@gmail.com')
-
-
-// Connec Tab: QR code display
-class Connec extends React.Component {
-  render() {
-    userinfo = {
-      "name": "Ryan DiCenzo",
-      "title": "Software Engineer",
-      "facebook": "http://www.facebook.com/ryandicenzo"
-    }
-    var qrstring = JSON.stringify(userinfo)
-
-    return (
-      <View>
-        <Header
-          centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
-        />
-        <View style={styles.container}>
-          <QRCode
-            value={qrstring}
-            size={300}
-            bgColor='black'
-            fgColor='white'
-          />
-        </View>
-      </View>
-    );
-  }
-}
 
 // Camera Tab: QR scanner
 class Camera extends React.Component {
@@ -220,7 +192,7 @@ class Contacts extends React.Component {
 
 
 // Bottom Tab Menu
-const navigator = createBottomTabNavigator(
+const MyNavigator = createBottomTabNavigator(
   // Menu names and associated tab classes
   {
     Profile: Profile,
@@ -259,7 +231,9 @@ const navigator = createBottomTabNavigator(
 export default class Root extends React.Component {
   render() {
     return (
-      <View><Text>Hello</Text></View>
+      <Provider store={Store}>
+        <MyNavigator />
+      </Provider>
     );
   }
 }

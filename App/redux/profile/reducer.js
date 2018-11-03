@@ -1,3 +1,5 @@
+import { ACTION_SET } from './actions';
+
 const defaultState = {
   name: 'Fake name',
   email: '',
@@ -5,7 +7,13 @@ const defaultState = {
 };
 
 const profile = (state = defaultState, action) => {
-  return state;
+  switch(action.type) {
+    case ACTION_SET:
+      return { ...state, ...action.payload };
+    
+    default:
+      return state;
+  }
 };
 
 
