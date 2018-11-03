@@ -1,9 +1,10 @@
 # Connec
-Connec is a cross-platform mobile application that allows users to instantaneously share contact details and contextual information with either one person or up to millions of people.
+Connec is a cross-platform mobile application powered by React Native that allows users to instantaneously share contact details and contextual information with one person or up to millions of people.
 
 ## User Stories
 1. A single user can immediately share their personal, professional, or event-dependent links
     - Share with device's native plain text sharing, which supports AirDrop, texting, email, Messenger, etc
+        - Prompt the user to download our app to "Save Name's profile and get updates by downloading Connec"
     - Share with other app users via QR code, similar to Snapchat
     - Share with a mobile-friendly online link 1:1 or with millions of people
     - Killer app: Instantly share social information and important details, fostering friendships and engagement
