@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 49952,
-  "expoServerNgrokUrl": "https://iw-g6c.brendonwong.app.exp.direct",
-  "packagerNgrokUrl": "https://packager.iw-g6c.brendonwong.app.exp.direct",
-  "ngrokPid": 49980
+  "packagerPort": 19001,
+  "packagerPid": 26968,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

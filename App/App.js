@@ -1,53 +1,65 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Alert, Linking, Dimensions, LayoutAnimation, StatusBar, TouchableOpacity } from 'react-native';
 // Components: https://react-native-training.github.io/react-native-elements/
 // Icons: https://material.io/tools/icons/
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Button, ButtonGroup, Icon, Header, List, ListItem } from 'react-native-elements';
+import { Button, ButtonGroup, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 // Tab Navigation: https://reactnavigation.org/docs/en/tab-based-navigation.html
 import { createBottomTabNavigator } from 'react-navigation';
 // QR Code Scanner: https://github.com/cssivision/react-native-qrcode
 import QRCode from 'react-native-qrcode';
+import { BarCodeScanner, Permissions } from 'expo';
+import { Provider, connect } from 'react-redux';
+
+import Store from './redux/store';
+
+// Import my pages
+import Profile from './pages/Profile';
 
 
-// Profile Tab
-class Profile extends React.Component {
-  render() {
-    
-    return (
-      <View>
-        <Header
-          centerComponent={{ text: 'PROFILE', style: { color: '#fff' } }}
-        />
-      </View>
-    );
+class User {
+  constructor(name, facebook, email)
+  {
+    this.name = name
+    this.facebook = facebook
+    this.email = email
   }
+
+  setName(name)
+  {
+    this.name = name
+  }
+
+  getName()
+  {
+    return this.name
+  }
+
 }
 
+homeuser = new User('Ryan', 'http://www.facebook.com', 'dicenzoryan@gmail.com')
 
-// Connec Tab: QR scanner and QR code display
+
+// Connec Tab: QR code display
 class Connec extends React.Component {
   render() {
     userinfo = {
       "name": "Ryan DiCenzo",
-      "avatar": "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/p50x50/37898647_489897241450736_6836036219382530048_n.jpg?_nc_cat=106&_nc_ht=scontent-lax3-1.xx&oh=c45bc9e6e4a4e991f534a5fb989a4fe0&oe=5C3E36F3",
-      "title": "Software Engineer"
+      "title": "Software Engineer",
+      "facebook": "http://www.facebook.com/ryandicenzo"
     }
-    var qrstring = "";
-    for (var key in userinfo) {
-      qrstring = qrstring + (userinfo[key])
-    }
-    
+    var qrstring = JSON.stringify(userinfo)
+
     return (
       <View>
         <Header
           centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
         />
-        <View>
+        <View style={styles.container}>
           <QRCode
             value={qrstring}
-            size={200}
-            bgColor='purple'
+            size={300}
+            bgColor='black'
             fgColor='white'
           />
         </View>
@@ -56,7 +68,98 @@ class Connec extends React.Component {
   }
 }
 
+// Camera Tab: QR scanner
+class Camera extends React.Component {
+  state = {
+    hasCameraPermission: null,
+    lastScannedUrl: null,
+  };
 
+  componentDidMount() {
+    this._requestCameraPermission();
+  }
+
+  _requestCameraPermission = async () => {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({
+      hasCameraPermission: status === 'granted',
+    });
+  };
+
+  _handleBarCodeRead = result => {
+    if (result.data !== this.state.lastScannedUrl) {
+      LayoutAnimation.spring();
+      this.setState({ lastScannedUrl: result.data });
+    }
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+
+        {this.state.hasCameraPermission === null
+          ? <Text>Requesting for camera permission</Text>
+          : this.state.hasCameraPermission === false
+              ? <Text style={{ color: '#fff' }}>
+                  Camera permission is not granted
+                </Text>
+              : <BarCodeScanner
+                  onBarCodeRead={this._handleBarCodeRead}
+                  style={{
+                    height: Dimensions.get('window').height,
+                    width: Dimensions.get('window').width,
+                  }}
+                />}
+
+        {this._maybeRenderUrl()}
+
+        <StatusBar hidden />
+      </View>
+    );
+  }
+
+  _handlePressUrl = () => {
+    Alert.alert(
+      'Open this URL?',
+      this.state.lastScannedUrl,
+      [
+        {
+          text: 'Yes',
+          onPress: () => Linking.openURL(this.state.lastScannedUrl),
+        },
+        { text: 'No', onPress: () => {} },
+      ],
+      { cancellable: false }
+    );
+  };
+
+  _handlePressCancel = () => {
+    this.setState({ lastScannedUrl: null });
+  };
+
+  _maybeRenderUrl = () => {
+    if (!this.state.lastScannedUrl) {
+      return;
+    }
+
+    return (
+      <View style={styles.bottomBar}>
+        <TouchableOpacity style={styles.url} onPress={this._handlePressUrl}>
+          <Text numberOfLines={1} style={styles.urlText}>
+            {this.state.lastScannedUrl}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.cancelButton}
+          onPress={this._handlePressCancel}>
+          <Text style={styles.cancelButtonText}>
+            Cancel
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+}
 // Contacts Tab
 class Contacts extends React.Component {
   render() {
@@ -117,12 +220,13 @@ class Contacts extends React.Component {
 
 
 // Bottom Tab Menu
-export default createBottomTabNavigator(
+const navigator = createBottomTabNavigator(
   // Menu names and associated tab classes
   {
     Profile: Profile,
     Connec: Connec,
-    Contacts: Contacts
+    Contacts: Contacts,
+    Camera: Camera
   },
   // Menu icons
   {
@@ -150,3 +254,47 @@ export default createBottomTabNavigator(
     // },
   }
 );
+
+// Provider Code
+export default class Root extends React.Component {
+  render() {
+    return (
+      <View><Text>Hello</Text></View>
+    );
+  }
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#000',
+  },
+  bottomBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: 15,
+    flexDirection: 'row',
+  },
+  url: {
+    flex: 1,
+  },
+  urlText: {
+    color: '#fff',
+    fontSize: 20,
+  },
+  cancelButton: {
+    marginLeft: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cancelButtonText: {
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 18,
+  },
+});
