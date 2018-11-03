@@ -6,11 +6,40 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button, ButtonGroup, Icon, Header, List, ListItem } from 'react-native-elements';
 // https://reactnavigation.org/docs/en/tab-based-navigation.html
 import { createBottomTabNavigator } from 'react-navigation';
+// https://github.com/cssivision/react-native-qrcode
 import QRCode from 'react-native-qrcode';
 
 
 // Profile Tab
 class Profile extends React.Component {
+  render() {
+
+    return (
+      <View>
+      <Header
+        centerComponent={{ text: 'PROFILE', style: { color: '#fff' } }}
+      />
+      </View>
+
+      // <View style={styles.container}>
+      //   <Text>Open up App.js to start working on your app!</Text>
+      //   <Button
+      //     icon={{
+      //       name: 'share',
+      //       size: 15,
+      //       color: 'white'
+      //     }}
+      //     title='Scan QR'
+      //   />
+      // 
+      // </View>
+    );
+  }
+}
+
+
+// Connec Tab: QR scanner and QR code display
+class Connec extends React.Component {
   render() {
 
     userinfo = {
@@ -27,10 +56,12 @@ class Profile extends React.Component {
 
     return (
       <View>
-      <View>
       <Header
-        centerComponent={{ text: 'PROFILE', style: { color: '#fff' } }}
+
+      centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
+
       />
+
       <View>
       <QRCode
         value={qrstring}
@@ -41,47 +72,6 @@ class Profile extends React.Component {
       </View>
 
       </View>
-    );
-  }
-}
-
-
-// Connec Tab: QR scanner and QR code display
-class Connec extends React.Component {
-  render() {
-
-    return (
-      <View>
-      <Header
-        centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
-      />
-
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Button
-          icon={{
-            name: 'share',
-            size: 15,
-            color: 'white'
-          }}
-          title='Scan QR'
-        />
-
-      </View>
-      
-      // <View style={styles.container}>
-      //   <Text>Open up App.js to start working on your app!</Text>
-      //   <Button
-      //     icon={{
-      //       name: 'share',
-      //       size: 15,
-      //       color: 'white'
-      //     }}
-      //     title='Scan QR'
-      //   />
-      // 
-      // </View>
-
     );
   }
 }
@@ -124,13 +114,11 @@ class Contacts extends React.Component {
       },
   ]
 
-
     return (
       <View>
       <Header
         centerComponent={{ text: 'CONTACTS', style: { color: '#fff' } }}
       />
-
 
       <List containerStyle={{marginBottom: 20}}>
         {
