@@ -13,26 +13,13 @@ import QRCode from 'react-native-qrcode';
 // Profile Tab
 class Profile extends React.Component {
   render() {
-
+    
     return (
       <View>
-      <Header
-        centerComponent={{ text: 'PROFILE', style: { color: '#fff' } }}
-      />
+        <Header
+          centerComponent={{ text: 'PROFILE', style: { color: '#fff' } }}
+        />
       </View>
-
-      // <View style={styles.container}>
-      //   <Text>Open up App.js to start working on your app!</Text>
-      //   <Button
-      //     icon={{
-      //       name: 'share',
-      //       size: 15,
-      //       color: 'white'
-      //     }}
-      //     title='Scan QR'
-      //   />
-      // 
-      // </View>
     );
   }
 }
@@ -41,36 +28,29 @@ class Profile extends React.Component {
 // Connec Tab: QR scanner and QR code display
 class Connec extends React.Component {
   render() {
-
     userinfo = {
-    "name": "Ryan DiCenzo",
-    "avatar": "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/p50x50/37898647_489897241450736_6836036219382530048_n.jpg?_nc_cat=106&_nc_ht=scontent-lax3-1.xx&oh=c45bc9e6e4a4e991f534a5fb989a4fe0&oe=5C3E36F3",
-    "title": "Software Engineer"
-  }
-
-  var qrstring = "";
-  for(var key in userinfo)
-  {
-    qrstring = qrstring + (userinfo[key])
-  }
-
+      "name": "Ryan DiCenzo",
+      "avatar": "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/p50x50/37898647_489897241450736_6836036219382530048_n.jpg?_nc_cat=106&_nc_ht=scontent-lax3-1.xx&oh=c45bc9e6e4a4e991f534a5fb989a4fe0&oe=5C3E36F3",
+      "title": "Software Engineer"
+    }
+    var qrstring = "";
+    for (var key in userinfo) {
+      qrstring = qrstring + (userinfo[key])
+    }
+    
     return (
       <View>
-      <Header
-
-      centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
-
-      />
-
-      <View>
-      <QRCode
-        value={qrstring}
-        size={200}
-        bgColor='purple'
-        fgColor='white'/>
-
-      </View>
-
+        <Header
+          centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
+        />
+        <View>
+          <QRCode
+            value={qrstring}
+            size={200}
+            bgColor='purple'
+            fgColor='white'
+          />
+        </View>
       </View>
     );
   }
@@ -80,9 +60,8 @@ class Connec extends React.Component {
 // Contacts Tab
 class Contacts extends React.Component {
   render() {
-
-  const list = [
-    {
+    const list = [
+      {
         name: 'Amy Farha',
         avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
         subtitle: 'Vice President'
@@ -112,26 +91,25 @@ class Contacts extends React.Component {
         avatar_url: 'https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/p50x50/37898647_489897241450736_6836036219382530048_n.jpg?_nc_cat=106&_nc_ht=scontent-lax3-1.xx&oh=c45bc9e6e4a4e991f534a5fb989a4fe0&oe=5C3E36F3',
         subtitle: 'Vice Chairman'
       },
-  ]
+    ]
 
     return (
       <View>
-      <Header
-        centerComponent={{ text: 'CONTACTS', style: { color: '#fff' } }}
-      />
-
-      <List containerStyle={{marginBottom: 20}}>
-        {
-          list.map((l) => (
-            <ListItem
-              roundAvatar
-              avatar={{uri:l.avatar_url}}
-              key={l.name}
-              title={l.name}
-            />
-          ))
-        }
-      </List>
+        <Header
+          centerComponent={{ text: 'CONTACTS', style: { color: '#fff' } }}
+        />
+        <List containerStyle={{marginBottom: 20}}>
+          {
+            list.map((l) => (
+              <ListItem
+                roundAvatar
+                avatar={{uri:l.avatar_url}}
+                key={l.name}
+                title={l.name}
+              />
+            ))
+          }
+        </List>
       </View>
     );
   }
@@ -166,11 +144,11 @@ export default createBottomTabNavigator(
       },
     }),
     // Menu colors
-    tabBarOptions: {
-      // Color of icon tints, defaults to native defaults
-      activeTintColor: '#007AFF', // #007AFF is iOS active color
-      inactiveTintColor: 'gray',
-    },
+    // tabBarOptions: {
+    //   // Color of icon tints, defaults to native defaults
+    //   activeTintColor: '#007AFF', // #007AFF is iOS active color
+    //   inactiveTintColor: 'gray',
+    // },
   }
 );
 
