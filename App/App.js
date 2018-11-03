@@ -1,14 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, ButtonGroup, Icon } from 'react-native-elements';
+import { Button, ButtonGroup, Icon, Header } from 'react-native-elements';
+import { createBottomTabNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
-
-    const footer = ['Profile', 'Connec', 'Friends']
-    
     
     return (
+      <View>
+      <Header
+      
+      centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
+      
+      />
+      
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
         <Button
@@ -17,19 +22,79 @@ export default class App extends React.Component {
             size: 15,
             color: 'white'
           }}
-          title='Share User'
-        />
-        <ButtonGroup style={styles.footer}
-          buttons={footer}
-          containerStyle={{height:100}}
+          title='Scan QR'
         />
       
       </View>
 
-      
+      </View>
     );
   }
 }
+
+class Profile extends React.Component {
+  render() {
+    
+    return (
+      <View>
+      <Header
+      
+      centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
+    
+      />
+      
+      <View style={styles.container}>
+        <Text>Open up App.js to start working on your app!</Text>
+        <Button
+          icon={{
+            name: 'share',
+            size: 15,
+            color: 'white'
+          }}
+          title='Scan QR'
+        />
+      
+      </View>
+
+      </View>
+    );
+  }
+}
+
+class Friends extends React.Component {
+  render() {
+    
+    return (
+      <View>
+      <Header
+      
+      centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
+    
+      />
+      
+      <View style={styles.container}>
+        <Text>Open up App.js to start working on your app!</Text>
+        <Button
+          icon={{
+            name: 'share',
+            size: 15,
+            color: 'white'
+          }}
+          title='Scan QR'
+        />
+      
+      </View>
+
+      </View>
+    );
+  }
+}
+
+export default createBottomTabNavigator({
+  Profile: Profile,
+  Connec: App,
+  Friends: Friends
+});
 
 const styles = StyleSheet.create({
   container: {
