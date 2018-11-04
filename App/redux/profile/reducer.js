@@ -1,9 +1,8 @@
 import { ACTION_SET } from './actions';
 
 const defaultState = {
-  name: 'Fake name',
-  email: '',
-  phone: '911'
+  name: '',
+  avatar: 'https://www.gravatar.com/avatar/x?d=mp'
 };
 
 const profile = (state = defaultState, action) => {

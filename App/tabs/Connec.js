@@ -22,6 +22,46 @@ class Connec extends React.Component {
                    'N:Gump;Forrest;;Mr.;\r\n' +
                    'TEL;TYPE=HOME:78884545247\r\n' +
                    'END:VCARD';
+    
+    info = this.props.profile
+
+    var fname = info.fname
+    var lname = info.lname
+    var company = info.company
+    var hphone = info.hphone
+    var wphone = info.wphone
+    var homeemail = info.homeemail
+    var workemail = info.workemail
+    var homepage = info.homepage
+    var street = info.street
+    var city = info.city
+    var zip = info.zip
+    var country = info.country
+    var byear = info.byear
+    var bmonth = info.bmonth
+    var bday = info.bday
+
+    var twitter = info.twitter
+    var facebook = info.facebook
+    var linkedin = info.linkedin
+    var snapchat = info.snapchat
+    var instagram = info.instagram
+
+
+    var qrstring = 'BEGIN:VCARD\r\n' +
+                   'N:' + fname + ';' + lname+ ';;\r\n' +
+                   'ORG:' + company + '\r\n' +
+                   'TEL;TYPE=HOME:'+hphone+ '\r\n' +
+                   'TEL;TYPE=WORK:'+wphone+'\r\n' +
+                   'EMAIL:'+ homeemail + '\r\n' +
+                   'EMAIL:'+ workemail + '\r\n' +
+                   'URL;TYPE=pref:'+instagram+'\r\n'+
+                   'URL;TYPE=pref:'+twitter+'\r\n'+
+                   'URL;TYPE=pref:'+facebook+'\r\n'+
+                   'URL;TYPE=pref:'+linkedin+'\r\n'+
+                   'URL;TYPE=pref:'+snapchat+'\r\n' +
+                   'END:VCARD';
+    
 
     return (
       <View>

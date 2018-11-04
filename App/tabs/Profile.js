@@ -1,8 +1,8 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
+import { TextInput, View, ScrollView } from 'react-native';
 // Components: https://react-native-training.github.io/react-native-elements/
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Text, Button, ButtonGroup, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import { Text, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage, Avatar } from 'react-native-elements';
 // Connect components to Redux
 import { connect } from 'react-redux';
 
@@ -19,10 +19,20 @@ class Profile extends React.Component {
   render() {
 
     return (
-      <View>
+      <ScrollView>
         <Header
           centerComponent={{ text: 'PROFILE', style: { color: '#fff' } }}
         />
+        
+        <View style={{alignItems: 'center', marginTop: 20, marginBottom: 10}}>
+          <Avatar
+            xlarge
+            rounded
+            source={{uri: this.props.profile.avatar}}
+            onPress={() => console.log("Works!")}
+            activeOpacity={0.7}
+          />
+        </View>
         
         {/* Contact */}
         <FormLabel>Contact</FormLabel>
@@ -53,6 +63,15 @@ class Profile extends React.Component {
             }))
           }}
         />
+        <FormInput
+          placeholder="Profile image link"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              avatar: text,
+            }))
+          }}
+        />
         
         {/* Phone */}
         <FormLabel>Phone</FormLabel>
@@ -66,7 +85,7 @@ class Profile extends React.Component {
           }}
         />
         <FormInput
-          placeholder="Work / school email"
+          placeholder="Work phone"
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -174,7 +193,7 @@ class Profile extends React.Component {
           }}
         />
 
-      </View>
+      </ScrollView>
     );
   }
 }
