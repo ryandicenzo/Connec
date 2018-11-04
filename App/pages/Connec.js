@@ -37,21 +37,105 @@ class Connec extends React.Component {
     var snapchat = info.snapchat
     var instagram = info.instagram
 
+    var vCard = require('vcf')
 
-    var qrstring = 'BEGIN:VCARD\r\n' +
-                  'FN:' +
-                  'N:' + lname + ';' + fname+ ';;'\r\n' +
-                  'ORG:' + company + '\r\n' +
-                  'TEL;TYPE=HOME:'+hphone+ '\r\n' +
-                  'TEL;TYPE=WORK:'+wphone+'\r\n' +
-                  'EMAIL:'+ homeemail + '\r\n' +
-                  'EMAIL:'+ workemail + '\r\n' +
-                  'URL;TYPE=pref:'+instagram+'\r\n'+
-                  'URL;TYPE=pref:'+twitter+'\r\n'+
-                  'URL;TYPE=pref:'+facebook+'\r\n'+
-                  'URL;TYPE=pref:'+linkedin+'\r\n'+
-                  'URL;TYPE=pref:'+snapchat+'\r\n'
-                  'END:VCARD';
+    const vcardContent = vcard.generate({
+  name: {
+    familyName: 'Doe',
+    givenName: 'John',
+    middleName: 'Philip',
+    prefix: 'Dr.',
+    suffix: 'Jr.',
+  },
+  formattedNames: [{
+    text: 'Mr. Johny',
+  }],
+  nicknames: [{
+    text: 'Phil',
+  }],
+  extraName: {
+    maidenName: 'MaidenName',
+    phoneticFirstName: 'PhoneticFirstName',
+    phoneticMiddleName: 'PhoneticMiddleName',
+    phoneticLastName: 'PhoneticLastName',
+
+    pronunciationFirstName: 'PronunciationFirstName',
+    pronunciationMiddleName: 'PronunciationMiddleName',
+    pronunciationLastName: 'PronunciationLastName',
+  },
+
+  works: [{
+    organization: 'My Company, Inc.',
+    title: 'CEO',
+    role: 'Executive',
+  }],
+  emails: [{
+    type: 'work',
+    text: 'john@mycompany.com',
+  }, {
+    type: 'home',
+    text: 'johndoe@example.com',
+  }],
+  phones: [{
+    type: 'work',
+    text: '1 (234) 567-8901',
+  }, {
+    text: '(123) 123-1234',
+  }, {
+    uri: 'tel:1234567890',
+  }],
+  addresses: [{
+    type: 'work',
+    street: '123 Forbes Ave, Apt 1',
+    locality: 'San Francisco',
+    region: 'CA',
+    code: '12345',
+    country: 'USA',
+  }, {
+    type: 'home',
+    street: '456 Home St',
+    locality: 'Homeland',
+    region: 'CA',
+    code: '23456',
+    country: 'USA',
+  }],
+  socialProfiles: [{
+    type: 'facebook',
+    uri: 'http://www.facebook.com/johndoe',
+  }, {
+    type: 'twitter',
+    user: 'johnie',
+  }],
+  urls: [{
+    type: 'internet',
+    uri: 'http://www.mycompany.com',
+  }, {
+    type: 'personal',
+    uri: 'http://www.johndoe.com',
+  }],
+
+  photos: [{
+    type: 'work',
+    uri: 'https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg',
+  }, {
+    type: 'home',
+    dataUri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD///+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4Ug9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC',
+  }],
+
+  birthday: {
+    year: 2000,
+    month: 1,
+    day: 31,
+  },
+  gender: {
+    sex: 'male',
+  },
+  notes: [{
+    text: 'John Doe has a long and varied history, being documented on more police files that anyone else.\nReports of his death are alas numerous.',
+  }, {
+    text: 'Another note.',
+  }],
+});
 
         /*
 
@@ -70,22 +154,22 @@ class Connec extends React.Component {
         URL:https://www.plus.google.com/ryandicenzo
         URL:https://www.twitter.com/ryandicenzo
         END:VCARD
-
-
-
         */
 
 
 
-
     return (
+
+      console.log(vcardContent)
+
+
       <View>
         <Header
           centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
         />
         <View style={{alignItems: "center"}}>
           <QRCode
-            value={qrstring}
+            value={vcardContent}
             size={300}
             bgColor='black'
             fgColor='white'
