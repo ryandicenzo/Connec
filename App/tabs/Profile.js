@@ -183,9 +183,9 @@ class Profile extends React.Component {
         />
         
         {/* Birthday */}
-        <FormLabel>Birthday</FormLabel>
+        <FormLabel>Birthday (MM/DD/YYYY)</FormLabel>
         <FormInput
-          placeholder="Month (XX)"
+          placeholder="Month (MM)"
           defaultValue= {this.props.profile.bmonth}
           onChangeText={(text) => {
             this.setState({text});
@@ -195,7 +195,7 @@ class Profile extends React.Component {
           }}
         />
         <FormInput
-          placeholder="Day (XX)"
+          placeholder="Day (DD)"
           defaultValue= {this.props.profile.bday}
           onChangeText={(text) => {
             this.setState({text});
@@ -205,7 +205,7 @@ class Profile extends React.Component {
           }}
         />
         <FormInput
-          placeholder="Year (XXXX)"
+          placeholder="Year (YYYY)"
           defaultValue= {this.props.profile.byear}
           onChangeText={(text) => {
             this.setState({text});

@@ -97,7 +97,7 @@ class Connec extends React.Component {
             fgColor='white'
           />
           <Text h4 style={{ margin: 50, marginTop: 30, marginBottom: 30, textAlign: 'center' }}>
-            Scan the code with your camera app to load my contact card!
+            Scan the QR code with your camera app to load my contact info!
           </Text>
           <Text>
           {}
