@@ -39,7 +39,7 @@ const Navigator = createBottomTabNavigator(
         } else if (routeName === 'Connec') {
           iconName = `texture`;
         } else if (routeName === 'Camera') {
-          iconName = `camera`; 
+          iconName = `camera`;
         } else if (routeName === 'Contacts') {
           iconName = `contacts`;
         }
