@@ -68,21 +68,17 @@ class Connec extends React.Component {
         <Header
           centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
         />
-        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '90%'}}>
+        <Text>{this.props.profile.fname}</Text>
+        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '85%'}}>
           <QRCode
             value={qrstring}
             size={300}
             bgColor='black'
             fgColor='white'
           />
-          <Text h4 style={{ margin: 50, textAlign: 'center' }}>
+          <Text h4 style={{ margin: 50, marginTop: 30, marginBottom: 30, textAlign: 'center' }}>
             Scan the code with your camera app to load my contact card!
           </Text>
-        </View>
-        <View>
-          <Text>{this.props.profile.fname}</Text>
-          <Text>{this.props.profile.hphone}</Text>
-          <Text>{this.props.profile.facebook}</Text>
         </View>
       </View>
     );

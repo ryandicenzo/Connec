@@ -10,7 +10,7 @@ import { createBottomTabNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 
 // Import our app's store
-import Store from './redux/store';
+import {store, persistor } from './redux/store';
 
 // Import app tab components
 import Profile from './tabs/Profile';
@@ -37,7 +37,7 @@ const Navigator = createBottomTabNavigator(
         } else if (routeName === 'Connec') {
           iconName = `texture`;
         } else if (routeName === 'Camera') {
-          iconName = `camera`;
+          iconName = `camera`; 
         }
 
         // Return standard Icon component from react-native-elements
@@ -58,7 +58,7 @@ const Navigator = createBottomTabNavigator(
 export default class Root extends React.Component {
   render() {
     return (
-      <Provider store={Store}>
+      <Provider store={store}>
         <Navigator />
       </Provider>
     );
