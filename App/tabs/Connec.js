@@ -37,9 +37,9 @@ class Connec extends React.Component {
           />
         </View>
         <View>
-          <Text>{this.props.profile.name}</Text>
-          <Text>{this.props.profile.email}</Text>
-          <Text>{this.props.profile.hello}</Text>
+          <Text>{this.props.profile.fname}</Text>
+          <Text>{this.props.profile.hphone}</Text>
+          <Text>{this.props.profile.facebook}</Text>
         </View>
       </View>
     );

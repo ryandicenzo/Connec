@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 // Components: https://react-native-training.github.io/react-native-elements/
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Button, ButtonGroup, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import { Text, Button, ButtonGroup, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 // Connect components to Redux
 import { connect } from 'react-redux';
 
@@ -23,21 +23,157 @@ class Profile extends React.Component {
         <Header
           centerComponent={{ text: 'PROFILE', style: { color: '#fff' } }}
         />
-
-        <FormLabel>Enter your name!</FormLabel>
+        
+        {/* Contact */}
+        <FormLabel>Contact</FormLabel>
         <FormInput
-          style={{height: 40}}
-          placeholder="Enter your name here"
+          placeholder="First name"
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
-              name: text,
-              email: text,
-              hello: 'apple'
+              fname: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="Last name"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              lname: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="Company / organization"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              company: text,
             }))
           }}
         />
         
+        {/* Phone */}
+        <FormLabel>Phone</FormLabel>
+        <FormInput
+          placeholder="Personal phone"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              hphone: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="Work / school email"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              wphone: text,
+            }))
+          }}
+        />
+        
+        {/* Social Profiles */}
+        <FormLabel>Social Profiles</FormLabel>
+        <FormInput
+          placeholder="Facebook"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              facebook: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="LinkedIn"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              linkedin: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="Instagram"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              instagram: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="Snapchat"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              snapchat: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="Twitter"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              twitter: text,
+            }))
+          }}
+        />
+        
+        {/* Email */}
+        <FormLabel>Email</FormLabel>
+        <FormInput
+          placeholder="Personal email"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              homeemail: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="Work / school email"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              workemail: text,
+            }))
+          }}
+        />
+        
+        {/* Birthday */}
+        <FormLabel>Birthday</FormLabel>
+        <FormInput
+          placeholder="Month (XX)"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              bmonth: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="Day (XX)"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              bday: text,
+            }))
+          }}
+        />
+        <FormInput
+          placeholder="Year (XXXX)"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              byear: text,
+            }))
+          }}
+        />
+
       </View>
     );
   }
