@@ -17,4 +17,7 @@ Connec is a cross-platform mobile application powered by React Native that allow
 - Installed Homebrew (Mac), Node.js, and Expo
 - `expo init App` to create a minimal Expo app
 - `npm install --save react-native-elements` to add pre-built visual components to our app
-- `npm install --save react-navigation` to add tab navigation to our app
+- `npm install --save react-navigation` to add tab-based navigation to our app
+- `react-native-qrcode` to add QR code generation to our app
+- `npm install --save redux react-redux` to add global state to our app
+- iOS Contacts [supports](https://support.apple.com/kb/ph3605?locale=en_US) vCard format v3.0+
