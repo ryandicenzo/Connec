@@ -68,7 +68,6 @@ class Connec extends React.Component {
         <Header
           centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
         />
-        <Text>{this.props.profile.fname}</Text>
         <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '85%'}}>
           <QRCode
             value={qrstring}

@@ -9,8 +9,11 @@ import { createBottomTabNavigator } from 'react-navigation';
 // Import Provider to wrap our app's highest level component
 import { Provider } from 'react-redux';
 
-// Import our app's store
+// Import our app's store and persistor
 import {store, persistor } from './redux/store';
+
+// Wrap root component with PersistGate
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
 // Import app tab components
 import Profile from './tabs/Profile';
@@ -59,7 +62,9 @@ export default class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
         <Navigator />
+      </PersistGate>
       </Provider>
     );
   }

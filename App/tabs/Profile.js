@@ -39,6 +39,7 @@ class Profile extends React.Component {
         <FormLabel>Contact</FormLabel>
         <FormInput
           placeholder="First name"
+          defaultValue= {this.props.profile.fname}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -48,6 +49,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Last name"
+          defaultValue= {this.props.profile.lname}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -57,6 +59,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Company / organization"
+          defaultValue= {this.props.profile.company}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -66,6 +69,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Profile image link"
+          defaultValue= {this.props.profile.avatar}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -78,6 +82,7 @@ class Profile extends React.Component {
         <FormLabel>Phone</FormLabel>
         <FormInput
           placeholder="Personal phone"
+          defaultValue= {this.props.profile.hphone}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -87,6 +92,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Work phone"
+          defaultValue= {this.props.profile.wphone}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -99,6 +105,7 @@ class Profile extends React.Component {
         <FormLabel>Social Profiles</FormLabel>
         <FormInput
           placeholder="Facebook"
+          defaultValue= {this.props.profile.facebook}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -108,6 +115,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="LinkedIn"
+          defaultValue= {this.props.profile.linkedin}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -117,6 +125,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Instagram"
+          defaultValue= {this.props.profile.instagram}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -126,6 +135,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Snapchat"
+          defaultValue= {this.props.profile.snapchat}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -135,6 +145,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Twitter"
+          defaultValue= {this.props.profile.twitter}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -147,6 +158,7 @@ class Profile extends React.Component {
         <FormLabel>Email</FormLabel>
         <FormInput
           placeholder="Personal email"
+          defaultValue= {this.props.profile.homeemail}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -156,6 +168,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Work / school email"
+          defaultValue= {this.props.profile.workemail}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -168,6 +181,7 @@ class Profile extends React.Component {
         <FormLabel>Birthday</FormLabel>
         <FormInput
           placeholder="Month (XX)"
+          defaultValue= {this.props.profile.bmonth}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -177,6 +191,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Day (XX)"
+          defaultValue= {this.props.profile.bday}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -186,6 +201,7 @@ class Profile extends React.Component {
         />
         <FormInput
           placeholder="Year (XXXX)"
+          defaultValue= {this.props.profile.byear}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
