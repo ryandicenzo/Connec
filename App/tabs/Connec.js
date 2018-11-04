@@ -40,4 +40,5 @@ class Connec extends React.Component {
   }
 }
 
+// Connect component to Redux store
 export default connect(state => state)(Connec);

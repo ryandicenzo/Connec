@@ -60,4 +60,5 @@ state = {
   }
 }
 
+// Connect component to Redux store
 export default connect(state => state)(Profile);

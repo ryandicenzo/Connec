@@ -13,10 +13,10 @@ import { Provider, connect } from 'react-redux';
 import Store from './redux/store';
 
 // Import my pages
-import Profile from './pages/Profile';
-import Connec from './pages/Connec';
-import Camera from './pages/Camera';
-import Contacts from './pages/Contacts';
+import Profile from './tabs/Profile';
+import Connec from './tabs/Connec';
+import Camera from './tabs/Camera';
+import Contacts from './tabs/Contacts';
 
 
 // Bottom Tab Menu
