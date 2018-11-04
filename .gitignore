@@ -1,3 +1,7 @@
+# Expo
+.expo
+__generated__
+
 # Xcode
 !**/*.xcodeproj
 !**/*.pbxproj
