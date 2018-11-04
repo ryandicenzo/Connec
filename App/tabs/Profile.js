@@ -10,7 +10,7 @@ import { set as setProfile } from '../redux/profile/actions';
 
 // Profile Tab
 class Profile extends React.Component {
-  // Have component state hold form field text
+  // Have component local state hold form field text
   constructor(props) {
     super(props);
     this.state = {text: ''};
@@ -32,6 +32,8 @@ class Profile extends React.Component {
             this.setState({text});
             this.props.dispatch(setProfile({
               name: text,
+              email: text,
+              hello: 'apple'
             }))
           }}
         />
