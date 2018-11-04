@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, Alert, Linking, Dimensions, LayoutAnimation, StatusBar, TouchableOpacity } from 'react-native';
-// Components: https://react-native-training.github.io/react-native-elements/
-// Icons: https://material.io/tools/icons/
+import { Text, View } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Button, ButtonGroup, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import { Header } from 'react-native-elements';
+// Create QR code for a string
 import QRCode from 'react-native-qrcode';
+// Connect components to Redux
 import { connect } from 'react-redux';
 
 // Connec Tab: QR code display

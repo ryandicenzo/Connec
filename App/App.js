@@ -1,18 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, Alert, Linking, Dimensions, LayoutAnimation, StatusBar, TouchableOpacity } from 'react-native';
-// Components: https://react-native-training.github.io/react-native-elements/
+
 // Icons: https://material.io/tools/icons/
-// Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Button, ButtonGroup, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
+
 // Tab Navigation: https://reactnavigation.org/docs/en/tab-based-navigation.html
 import { createBottomTabNavigator } from 'react-navigation';
-import QRCode from 'react-native-qrcode';
-import { BarCodeScanner, Permissions } from 'expo';
-import { Provider, connect } from 'react-redux';
 
+// Import Provider to wrap our app's highest level component
+import { Provider } from 'react-redux';
+
+// Import our app's store
 import Store from './redux/store';
 
-// Import my pages
+// Import app tab components
 import Profile from './tabs/Profile';
 import Connec from './tabs/Connec';
 import Camera from './tabs/Camera';
@@ -21,14 +21,14 @@ import Contacts from './tabs/Contacts';
 
 // Bottom Tab Menu
 const Navigator = createBottomTabNavigator(
-  // Menu names and associated tab classes
+  // Set menu names and order (menuTitle, importedComponentName)
   {
     Profile: Profile,
     Connec: Connec,
     Camera: Camera,
     Contacts: Contacts
   },
-  // Menu icons
+  // Set menu icons
   {
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
@@ -48,7 +48,7 @@ const Navigator = createBottomTabNavigator(
         return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
       },
     }),
-    // Menu colors
+    // Set menu colors
     // tabBarOptions: {
     //   // Color of icon tints, defaults to native OS color defaults
     //   activeTintColor: '#007AFF', // #007AFF is iOS active color
@@ -58,7 +58,7 @@ const Navigator = createBottomTabNavigator(
 );
 
 
-// Provider: Makes store available to all components
+// Provider: Boilerplate to make the Redux store available to all components by wrapping the top level component, Navigator
 export default class Root extends React.Component {
   render() {
     return (
@@ -68,4 +68,3 @@ export default class Root extends React.Component {
     );
   }
 }
-
