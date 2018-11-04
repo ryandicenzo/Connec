@@ -17,7 +17,11 @@ class Connec extends React.Component {
       "title": "Software Engineer",
       "facebook": "http://www.facebook.com/ryandicenzo"
     }
-    var qrstring = JSON.stringify(userinfo)
+    var qrstring = 'BEGIN:VCARD\r\n' +
+                   'FN:Forrest Gump\r\n' +
+                   'N:Gump;Forrest;;Mr.;\r\n' +
+                   'TEL;TYPE=HOME:78884545247\r\n' +
+                   'END:VCARD';
 
     return (
       <View>
