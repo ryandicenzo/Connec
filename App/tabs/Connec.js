@@ -7,22 +7,11 @@ import QRCode from 'react-native-qrcode';
 // Connect components to Redux
 import { connect } from 'react-redux';
 
+import vcard from 'vcard-generator'
+
 // Connec Tab: QR code display
 class Connec extends React.Component {
   render() {
-    console.log(this.props)
-    console.log(this.props.profile.name)
-    userinfo = {
-      "name": this.props.profile.name,
-      "title": "Software Engineer",
-      "facebook": "http://www.facebook.com/ryandicenzo"
-    }
-    var qrstring = 'BEGIN:VCARD\r\n' +
-                   'FN:Forrest Gump\r\n' +
-                   'N:Gump;Forrest;;Mr.;\r\n' +
-                   'TEL;TYPE=HOME:78884545247\r\n' +
-                   'END:VCARD';
-    
     info = this.props.profile
 
     var fname = info.fname
@@ -33,10 +22,10 @@ class Connec extends React.Component {
     var homeemail = info.homeemail
     var workemail = info.workemail
     var homepage = info.homepage
-    var street = info.street
+    /*var street = info.street
     var city = info.city
     var zip = info.zip
-    var country = info.country
+    var country = info.country */
     var byear = info.byear
     var bmonth = info.bmonth
     var bday = info.bday
@@ -47,21 +36,53 @@ class Connec extends React.Component {
     var snapchat = info.snapchat
     var instagram = info.instagram
 
+    const vcardContent = vcard.generate({
+      name: {
+        familyName: lname,
+        givenName: fname,
+      },
+      works: [{
+        organization: company,
+      }],
+      emails: [{
+        type: 'work',
+        text: workemail,
+      }, {
+        type: 'home',
+        text: homeemail,
+      }],
+      phones: [{
+        type: 'work',
+        text: wphone,
+      }, {
+        text: hphone,
+      }],
+      urls: [{
+        type: 'personal',
+        uri: homepage,
+      }, {
+        type: 'twitter',
+        uri: ((twitter) ? 'twitter.com/' + twitter : '')
+      },
+      {
+        type: 'facebook',
+        uri: ((facebook) ? 'facebook.com/' + facebook : '')
+      },
+      {
+        type: 'linkedin',
+        uri: ((linkedin) ? 'linkedin.com/' + linkedin : '')
+      },
+      {
+        type: 'snapchat',
+        uri: ((snapchat) ? 'www.snapchat.com/add/' + snapchat : '')
+      },
+      {
+        type: 'instagram',
+        uri:((instagram) ? 'www.instagram.com/' + instagram : '')
+      }],
+    });
 
-    var qrstring = 'BEGIN:VCARD\r\n' +
-                   'N:' + fname + ';' + lname+ ';;\r\n' +
-                   'ORG:' + company + '\r\n' +
-                   'TEL;TYPE=HOME:'+hphone+ '\r\n' +
-                   'TEL;TYPE=WORK:'+wphone+'\r\n' +
-                   'EMAIL:'+ homeemail + '\r\n' +
-                   'EMAIL:'+ workemail + '\r\n' +
-                   'URL;TYPE=pref:'+instagram+'\r\n'+
-                   'URL;TYPE=pref:'+twitter+'\r\n'+
-                   'URL;TYPE=pref:'+facebook+'\r\n'+
-                   'URL;TYPE=pref:'+linkedin+'\r\n'+
-                   'URL;TYPE=pref:'+snapchat+'\r\n' +
-                   'END:VCARD';
-    
+
 
     return (
       <View>
@@ -70,7 +91,7 @@ class Connec extends React.Component {
         />
         <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '90%'}}>
           <QRCode
-            value={qrstring}
+            value={vcardContent}
             size={300}
             bgColor='black'
             fgColor='white'
@@ -78,6 +99,10 @@ class Connec extends React.Component {
           <Text h4 style={{ margin: 50, textAlign: 'center' }}>
             Scan the code with your camera app to load my contact card!
           </Text>
+          <Text>
+          {}
+          </Text>
+
         </View>
         <View>
           <Text>{this.props.profile.fname}</Text>
