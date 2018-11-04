@@ -104,6 +104,7 @@ class Profile extends React.Component {
         {/* Social Profiles */}
         <FormLabel>Social Profiles</FormLabel>
         <FormInput
+          autoCapitalize='none'
           placeholder="Facebook"
           defaultValue= {this.props.profile.facebook}
           onChangeText={(text) => {
@@ -114,6 +115,7 @@ class Profile extends React.Component {
           }}
         />
         <FormInput
+          autoCapitalize='none'
           placeholder="LinkedIn"
           defaultValue= {this.props.profile.linkedin}
           onChangeText={(text) => {
@@ -124,6 +126,7 @@ class Profile extends React.Component {
           }}
         />
         <FormInput
+          autoCapitalize='none'
           placeholder="Instagram"
           defaultValue= {this.props.profile.instagram}
           onChangeText={(text) => {
@@ -134,6 +137,7 @@ class Profile extends React.Component {
           }}
         />
         <FormInput
+          autoCapitalize='none'
           placeholder="Snapchat"
           defaultValue= {this.props.profile.snapchat}
           onChangeText={(text) => {
@@ -144,6 +148,7 @@ class Profile extends React.Component {
           }}
         />
         <FormInput
+          autoCapitalize='none'
           placeholder="Twitter"
           defaultValue= {this.props.profile.twitter}
           onChangeText={(text) => {

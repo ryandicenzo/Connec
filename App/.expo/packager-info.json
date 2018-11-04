@@ -1,1 +1,9 @@
-{}
+{
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://9y-heb.brendonwong.app.exp.direct",
+  "packagerNgrokUrl": "https://packager.9y-heb.brendonwong.app.exp.direct",
+  "ngrokPid": 59857,
+  "devToolsPort": 19002,
+  "packagerPort": 19006,
+  "packagerPid": 59817
+}

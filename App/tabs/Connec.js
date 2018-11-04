@@ -89,7 +89,7 @@ class Connec extends React.Component {
         <Header
           centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
         />
-        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '85%'}}>
+        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '90%'}}>
           <QRCode
             value={vcardContent}
             size={300}
