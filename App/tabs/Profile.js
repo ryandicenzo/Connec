@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, View, ScrollView } from 'react-native';
+import { TextInput, View, ScrollView, KeyboardAvoidingView } from 'react-native';
 // Components: https://react-native-training.github.io/react-native-elements/
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
 import { Text, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage, Avatar } from 'react-native-elements';
@@ -19,6 +19,7 @@ class Profile extends React.Component {
   render() {
 
     return (
+      <KeyboardAvoidingView behavior="padding">
       <ScrollView>
         <Header
           centerComponent={{ text: 'PROFILE', style: { color: '#fff' } }}
@@ -192,8 +193,9 @@ class Profile extends React.Component {
             }))
           }}
         />
-
+        
       </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
