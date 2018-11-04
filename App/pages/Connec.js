@@ -39,6 +39,7 @@ class Connec extends React.Component {
 
 
     var qrstring = 'BEGIN:VCARD\r\n' +
+                  'FN:' +
                   'N:' + lname + ';' + fname+ ';;'\r\n' +
                   'ORG:' + company + '\r\n' +
                   'TEL;TYPE=HOME:'+hphone+ '\r\n' +

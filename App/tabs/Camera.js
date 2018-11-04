@@ -1,17 +1,9 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View, Alert, Linking, Dimensions, LayoutAnimation, StatusBar, TouchableOpacity } from 'react-native';
-// Components: https://react-native-training.github.io/react-native-elements/
-// Icons: https://material.io/tools/icons/
-// Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Button, ButtonGroup, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
-// Expo built-in camera scanner
+import React, { Component } from 'react';
+import { Alert, Linking, Dimensions, LayoutAnimation, Text, View, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
-// Connect components to Redux
 import { connect } from 'react-redux';
 
-
-// Camera Tab: QR scanner
-class Camera extends React.Component {
+class Camera extends Component {
   state = {
     hasCameraPermission: null,
     lastScannedUrl: null,
@@ -37,7 +29,7 @@ class Camera extends React.Component {
 
   render() {
     return (
-      <View style={{alignItems: 'center'}}>
+      <View style={styles.container}>
 
         {this.state.hasCameraPermission === null
           ? <Text>Requesting for camera permission</Text>
@@ -102,6 +94,41 @@ class Camera extends React.Component {
     );
   };
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#000',
+  },
+  bottomBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: 15,
+    flexDirection: 'row',
+  },
+  url: {
+    flex: 1,
+  },
+  urlText: {
+    color: '#fff',
+    fontSize: 20,
+  },
+  cancelButton: {
+    marginLeft: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cancelButtonText: {
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 18,
+  },
+});
+
 
 // Connect component to Redux store
 export default connect(state => state)(Camera);
