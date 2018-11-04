@@ -25,6 +25,11 @@ state = {
       }))
     }, 5000);
   }
+  
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
 
   render() {
     console.log(this.props);
@@ -40,6 +45,20 @@ state = {
 
 
         <Text>User: {homeuser.getName()}</Text>
+        
+        <TextInput
+          style={{height: 40}}
+          placeholder="Enter your name here"
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              name: text,
+            }))
+            }
+          }
+            
+             
+        />
 
         </View>
     );
