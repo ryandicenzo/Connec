@@ -80,6 +80,11 @@ class Connec extends React.Component {
         type: 'instagram',
         uri:((instagram) ? 'www.instagram.com/' + instagram : '')
       }],
+      birthday : {
+        year: parseInt(byear),
+        month: parseInt(bmonth),
+        day: parseInt(bday)
+      }
     });
 
 
