@@ -15,7 +15,7 @@ class Connec extends React.Component {
     console.log(this.props)
     console.log(this.props.profile.name)
     userinfo = {
-      "name": "Ryan DiCenzo",
+      "name": this.props.profile.name,
       "title": "Software Engineer",
       "facebook": "http://www.facebook.com/ryandicenzo"
     }
@@ -26,7 +26,7 @@ class Connec extends React.Component {
         <Header
           centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
         />
-        <View>
+        <View style={{alignItems: "center"}}>
           <QRCode
             value={qrstring}
             size={300}

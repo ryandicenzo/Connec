@@ -25,7 +25,7 @@ state = {
       }))
     }, 5000);
   }
-  
+
   constructor(props) {
     super(props);
     this.state = {text: ''};
@@ -41,11 +41,7 @@ state = {
         />
 
         <FormLabel>Enter your name!</FormLabel>
-        <FormInput>Name</FormInput>
-
-
-        <Text>User: {homeuser.getName()}</Text>
-        
+                
         <TextInput
           style={{height: 40}}
           placeholder="Enter your name here"
@@ -56,8 +52,8 @@ state = {
             }))
             }
           }
-            
-             
+
+
         />
 
         </View>
