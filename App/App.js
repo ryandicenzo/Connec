@@ -16,7 +16,6 @@ import Store from './redux/store';
 import Profile from './tabs/Profile';
 import Connec from './tabs/Connec';
 import Camera from './tabs/Camera';
-import Contacts from './tabs/Contacts';
 
 
 // Bottom Tab Menu
@@ -26,7 +25,6 @@ const Navigator = createBottomTabNavigator(
     Profile: Profile,
     Connec: Connec,
     Camera: Camera,
-    Contacts: Contacts
   },
   // Set menu icons
   {
@@ -40,8 +38,6 @@ const Navigator = createBottomTabNavigator(
           iconName = `texture`;
         } else if (routeName === 'Camera') {
           iconName = `camera`; 
-        } else if (routeName === 'Contacts') {
-          iconName = `contacts`;
         }
 
         // Return standard Icon component from react-native-elements
