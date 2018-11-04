@@ -70,7 +70,7 @@ class Connec extends React.Component {
       },
       {
         type: 'linkedin',
-        uri: ((linkedin) ? 'linkedin.com/' + linkedin : '')
+        uri: ((linkedin) ? 'linkedin.com/in/' + linkedin : '')
       },
       {
         type: 'snapchat',
