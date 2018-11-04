@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Header } from 'react-native-elements';
+import { Text, Header } from 'react-native-elements';
 // Create QR code for a string
 import QRCode from 'react-native-qrcode';
 // Connect components to Redux
@@ -68,13 +68,16 @@ class Connec extends React.Component {
         <Header
           centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
         />
-        <View style={{alignItems: "center"}}>
+        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '90%'}}>
           <QRCode
             value={qrstring}
             size={300}
             bgColor='black'
             fgColor='white'
           />
+          <Text h4 style={{ margin: 50, textAlign: 'center' }}>
+            Scan the code with your camera app to load my contact card!
+          </Text>
         </View>
         <View>
           <Text>{this.props.profile.fname}</Text>
