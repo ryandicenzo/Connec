@@ -1,17 +1,20 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Alert, Share } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Text, Header } from 'react-native-elements';
+import { Text, Header, Button, Icon } from 'react-native-elements';
 // Create QR code for a string
 import QRCode from 'react-native-qrcode';
 // Connect components to Redux
 import { connect } from 'react-redux';
-
 import vcard from 'vcard-generator'
+import { FileSystem } from 'expo';
+
 
 // Connec Tab: QR code display
 class Connec extends React.Component {
-  render() {
+
+  constructVCard() {
+
     info = this.props.profile
 
     var fname = info.fname
@@ -85,7 +88,29 @@ class Connec extends React.Component {
         month: parseInt(bmonth),
         day: parseInt(bday)
       }
-    });
+    })
+
+    this.fname = fname
+
+    Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + fname + '.vcf', vcardContent)
+
+    return vcardContent
+
+  }
+
+  vCard = this.constructVCard()
+
+  shareVCard()  {
+    const result = Share.share({
+          url:
+            FileSystem.documentDirectory + this.fname + '.vcf', title: 'share',
+          })
+  // (this.vCard)
+  }
+
+  render() {
+
+    this.vCard = this.constructVCard()
 
 
 
@@ -93,11 +118,15 @@ class Connec extends React.Component {
       <View>
         <Header
           centerComponent={{ text: 'CONNEC', style: { color: '#fff' } }}
+
+          rightComponent={<Icon name='share' color='white' onPress={() => this.shareVCard()} />}
+
         />
-        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '90%'}}>
+
+        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '92%'}}>
           <QRCode
-            value={vcardContent}
-            size={300}
+            value={this.vCard}
+            size={275}
             bgColor='black'
             fgColor='white'
           />

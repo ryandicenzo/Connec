@@ -40,7 +40,7 @@ const Navigator = createBottomTabNavigator(
         }
 
         // Return standard Icon component from react-native-elements
-        return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
+        return <Icon name={'camera'} size={horizontal ? 20 : 25} color={tintColor} />;
       },
     }),
     // Set menu colors
