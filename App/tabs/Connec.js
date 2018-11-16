@@ -90,9 +90,10 @@ class Connec extends React.Component {
       }
     })
 
-    this.fname = fname
+    this.fname = fname.replace(/\s+/g, '');
+    this.lname = lname.replace(/\s+/g, '');
 
-    Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + fname + '.vcf', vcardContent)
+    Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + fname + lname + '.vcf', vcardContent)
 
     return vcardContent
 
@@ -103,16 +104,13 @@ class Connec extends React.Component {
   shareVCard()  {
     const result = Share.share({
           url:
-            FileSystem.documentDirectory + this.fname + '.vcf', title: 'share',
+            FileSystem.documentDirectory + this.fname + this.lname + '.vcf', title: 'share',
           })
-  // (this.vCard)
-  }
+        }
 
   render() {
 
     this.vCard = this.constructVCard()
-
-
 
     return (
       <View>
