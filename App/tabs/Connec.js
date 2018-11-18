@@ -122,7 +122,7 @@ class Connec extends React.Component {
       <View style = {styles.header}>
         <Header
         centerComponent={{ text: 'c o n n e c', style: { color: '#fff', alignSelf: 'center', fontSize: 30} }}
-        rightComponent={<Icon name='share' color='white' onPress={() => this.shareVCard()} />}
+        rightComponent={<Icon name='send' color='white' onPress={() => this.shareVCard()} />}
 
         backgroundColor= 'theme.colors.primary'
         />
@@ -137,12 +137,12 @@ class Connec extends React.Component {
           />
           <View style={{paddingBottom: '10%'}}/>
           <Text style={styles.category}>iPhone (iOS 11+):</Text>
-          <Text style={styles.body}>Simply Open your Camera, and Scan Away</Text>
+          <Text style={styles.body}>Open camera and Scan!</Text>
           <Text style={styles.category}>Android</Text>
           <Text style={styles.body}>On Android 6.0+, Use your Default Camera</Text>
           <Text style={styles.body}>Do you have Google Assistant?</Text>
           <Text style={styles.body}>Open Assistant and click the lower right icon!</Text>
-
+          
         </View>
       </View>
     );
