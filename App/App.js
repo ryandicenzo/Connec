@@ -40,15 +40,15 @@ const Navigator = createBottomTabNavigator(
         }
 
         // Return standard Icon component from react-native-elements
-        return <Icon name={'camera'} size={horizontal ? 20 : 25} color={tintColor} />;
+        return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
       },
     }),
     // Set menu colors
-    // tabBarOptions: {
+     tabBarOptions: {
     //   // Color of icon tints, defaults to native OS color defaults
-    //   activeTintColor: '#007AFF', // #007AFF is iOS active color
-    //   inactiveTintColor: 'gray',
-    // },
+       activeTintColor: '#6CB4D2', // #007AFF is iOS active color
+       inactiveTintColor: 'gray',
+     },
   }
 );
 
