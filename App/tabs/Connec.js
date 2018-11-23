@@ -95,10 +95,10 @@ class Connec extends React.Component {
       }
     })
 
-    this.fname = fname.replace(/\s+/g, '');
-    this.lname = lname.replace(/\s+/g, '');
+    //this.fname = fname.replace(/\s+/g, '');
+    //this.lname = lname.replace(/\s+/g, '');
 
-    Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + fname + lname + '.vcf', vcardContent)
+    //Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + fname + lname + '.vcf', vcardContent)
 
     return vcardContent
 
@@ -128,12 +128,12 @@ class Connec extends React.Component {
         />
         </View>
 
-        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '82%'}}>
+        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '85%'}}>
           <QRCode
             value={this.vCard}
-            size={275}
-            bgColor='white'
-            fgColor='#2E728F'
+            size={280}
+            //bgColor='white'
+            //fgColor='black'
           />
           <View style={{paddingBottom: '10%'}}/>
           <Text style={styles.category}>iPhone (iOS 11+):</Text>
@@ -142,7 +142,7 @@ class Connec extends React.Component {
           <Text style={styles.body}>On Android 6.0+, Use your Default Camera</Text>
           <Text style={styles.body}>Do you have Google Assistant?</Text>
           <Text style={styles.body}>Open Assistant and click the lower right icon!</Text>
-          
+
         </View>
       </View>
     );
