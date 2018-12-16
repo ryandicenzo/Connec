@@ -95,10 +95,17 @@ class Connec extends React.Component {
       }
     })
 
-    //this.fname = fname.replace(/\s+/g, '');
-    //this.lname = lname.replace(/\s+/g, '');
+    this.fname = fname
+    this.lname = lname
 
-    //Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + fname + lname + '.vcf', vcardContent)
+    if(this.fname != '') {
+      this.fname = fname.replace(/\s+/g, '');
+    }
+    if(this.lname != ''){
+      this.lname = lname.replace(/\s+/g, '');
+    }
+
+    Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + fname + lname + '.vcf', vcardContent)
 
     return vcardContent
 
