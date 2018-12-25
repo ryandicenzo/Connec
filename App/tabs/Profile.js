@@ -1,13 +1,14 @@
 import React from 'react';
-import { TextInput, View, ScrollView, KeyboardAvoidingView, StyleSheet} from 'react-native';
+import { TextInput, View, ScrollView, KeyboardAvoidingView, StyleSheet, Switch} from 'react-native';
 // Components: https://react-native-training.github.io/react-native-elements/
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Text, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage, Avatar } from 'react-native-elements';
+import { Text, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage, Avatar, CheckBox } from 'react-native-elements';
 // Connect components to Redux
 import { connect } from 'react-redux';
 
 import { set as setProfile } from '../redux/profile/actions';
 import { Constants } from 'expo';
+import ProfileInput from '../components/profileinput.js'
 
 
 const theme = {
@@ -38,6 +39,8 @@ class Profile extends React.Component {
         />
         </View>
 
+
+{/*
         <View style={{alignItems: 'center', marginTop: 20, marginBottom: 10}}>
         <Avatar
         xlarge
@@ -46,14 +49,12 @@ class Profile extends React.Component {
         onPress={() => console.log("Add Upload Photo!")}
         activeOpacity={0.7}
         />
-
-
       </View>
+*/}
 
-
-        {/* Contact */}
         <FormLabel labelStyle={styles.label}>Contact</FormLabel>
-        <FormInput
+
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="First name"
           defaultValue= {this.props.profile.fname}
           onChangeText={(text) => {
@@ -63,7 +64,8 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Last name"
           defaultValue= {this.props.profile.lname}
           onChangeText={(text) => {
@@ -73,7 +75,8 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Company / organization"
           defaultValue= {this.props.profile.company}
           onChangeText={(text) => {
@@ -83,7 +86,11 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+
+        {/* Profile Photo
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Profile image link"
           defaultValue= {this.props.profile.avatar}
           onChangeText={(text) => {
@@ -93,10 +100,16 @@ class Profile extends React.Component {
             }))
           }}
         />
+        <Switch></Switch>
+        </View>
+        */}
+
 
         {/* Phone */}
         <FormLabel labelStyle={styles.label}>Phone</FormLabel>
-        <FormInput
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Personal phone"
           defaultValue= {this.props.profile.hphone}
           onChangeText={(text) => {
@@ -106,7 +119,11 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+        <Switch></Switch>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Work phone"
           defaultValue= {this.props.profile.wphone}
           onChangeText={(text) => {
@@ -116,10 +133,14 @@ class Profile extends React.Component {
             }))
           }}
         />
+        <Switch></Switch>
+        </View>
 
         {/* Social Profiles */}
         <FormLabel labelStyle={styles.label}>Social Profiles</FormLabel>
-        <FormInput
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="Facebook"
           defaultValue= {this.props.profile.facebook}
@@ -130,7 +151,11 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+        <Switch></Switch>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="LinkedIn"
           defaultValue= {this.props.profile.linkedin}
@@ -141,7 +166,11 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+        <Switch></Switch>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="Instagram"
           defaultValue= {this.props.profile.instagram}
@@ -152,7 +181,12 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+        <Switch></Switch>
+        </View>
+
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="Snapchat"
           defaultValue= {this.props.profile.snapchat}
@@ -163,7 +197,12 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+
+        <Switch></Switch>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="Twitter"
           defaultValue= {this.props.profile.twitter}
@@ -175,9 +214,14 @@ class Profile extends React.Component {
           }}
         />
 
+        <Switch></Switch>
+        </View>
+
         {/* Email */}
         <FormLabel labelStyle={styles.label}>Email</FormLabel>
-        <FormInput
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Personal email"
           defaultValue= {this.props.profile.homeemail}
           onChangeText={(text) => {
@@ -187,7 +231,12 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+
+        <Switch></Switch>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Work / school email"
           defaultValue= {this.props.profile.workemail}
           onChangeText={(text) => {
@@ -198,9 +247,14 @@ class Profile extends React.Component {
           }}
         />
 
+        <Switch></Switch>
+        </View>
+
         {/* Birthday */}
         <FormLabel labelStyle={styles.label}>Birthday (MM/DD/YYYY)</FormLabel>
-        <FormInput
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Month (MM)"
           defaultValue= {this.props.profile.bmonth}
           onChangeText={(text) => {
@@ -210,7 +264,12 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+
+        <Switch></Switch>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Day (DD)"
           defaultValue= {this.props.profile.bday}
           onChangeText={(text) => {
@@ -220,7 +279,12 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <FormInput
+
+        <Switch></Switch>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <FormInput containerStyle={styles.inputContainer}
           placeholder="Year (YYYY)"
           defaultValue= {this.props.profile.byear}
           onChangeText={(text) => {
@@ -230,6 +294,9 @@ class Profile extends React.Component {
             }))
           }}
         />
+
+        <Switch></Switch>
+        </View>
 
       </ScrollView>
       </KeyboardAvoidingView>
@@ -246,7 +313,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     color: theme.colors.primary
+  },
+
+  inputContainer: {
+    width: '75%'
   }
+
+
 });
 
 
