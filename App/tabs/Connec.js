@@ -44,6 +44,8 @@ class Connec extends React.Component {
     var snapchat = info.snapchat
     var instagram = info.instagram
 
+    console.log(info.hphone_sw);
+
     const vcardContent = vcard.generate({
       name: {
         familyName: lname,
@@ -54,49 +56,50 @@ class Connec extends React.Component {
       }],
       emails: [{
         type: 'work',
-        text: workemail,
+        text: ((info.wemail_sw) ? workemail : ''),
       }, {
         type: 'home',
-        text: homeemail,
+        text: ((info.hemail_sw) ?  homeemail : ''),
       }],
       phones: [{
         type: 'work',
-        text: wphone,
+        text: ((info.wphone_sw) ? wphone : ''),
       }, {
-        text: hphone,
+        text: ((info.hphone_sw) ? hphone : ''),
       }],
       urls: [{
         type: 'personal',
         uri: homepage,
       }, {
         type: 'twitter',
-        uri: ((twitter) ? 'twitter.com/' + twitter : '')
+        uri: ((twitter && info.tw_sw) ? 'twitter.com/' + twitter : '')
       },
       {
         type: 'facebook',
-        uri: ((facebook) ? 'facebook.com/' + facebook : '')
+        uri: ((facebook && info.fb_sw) ? 'facebook.com/' + facebook : '')
       },
       {
         type: 'linkedin',
-        uri: ((linkedin) ? 'linkedin.com/in/' + linkedin : '')
+        uri: ((linkedin && info.li_sw) ? 'linkedin.com/in/' + linkedin : '')
       },
       {
         type: 'snapchat',
-        uri: ((snapchat) ? 'www.snapchat.com/add/' + snapchat : '')
+        uri: ((snapchat && info.sc_sw) ? 'www.snapchat.com/add/' + snapchat : '')
       },
       {
         type: 'instagram',
-        uri:((instagram) ? 'www.instagram.com/' + instagram : '')
+        uri:((instagram && info.ig_sw) ? 'www.instagram.com/' + instagram : '')
       }],
       birthday : {
-        year: parseInt(byear),
-        month: parseInt(bmonth),
-        day: parseInt(bday)
+        year: ((info.bday_sw) ? parseInt(byear) : ''),
+        month: ((info.bday_sw) ? parseInt(bmonth) : ''),
+        day: ((info.bday_sw) ? parseInt(bday) : '')
       }
     })
 
     this.fname = fname
     this.lname = lname
+
 
     if(this.fname != '') {
       this.fname = fname.replace(/\s+/g, '');
@@ -105,7 +108,8 @@ class Connec extends React.Component {
       this.lname = lname.replace(/\s+/g, '');
     }
 
-    Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + fname + lname + '.vcf', vcardContent)
+
+    Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', vcardContent)
 
     return vcardContent
 
@@ -116,7 +120,7 @@ class Connec extends React.Component {
   shareVCard()  {
     const result = Share.share({
           url:
-            FileSystem.documentDirectory + this.fname + this.lname + '.vcf', title: 'share',
+            FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', title: 'share',
           })
         }
 

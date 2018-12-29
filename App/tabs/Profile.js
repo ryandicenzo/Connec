@@ -23,11 +23,10 @@ class Profile extends React.Component {
   // Have component local state hold form field text
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = { switch: false, text: ""};
   }
 
   render() {
-
     return (
       <KeyboardAvoidingView behavior="padding">
       <ScrollView bounces="False">
@@ -38,7 +37,6 @@ class Profile extends React.Component {
         backgroundColor= 'theme.colors.primary'
         />
         </View>
-
 
 {/*
         <View style={{alignItems: 'center', marginTop: 20, marginBottom: 10}}>
@@ -119,7 +117,29 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch></Switch>
+
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({hphone_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.hphone_sw}
+        />
+
+{/*
+
+        <Switch
+         onValueChange= {
+           switch => {
+           this.setState({switch});
+           this.props.dispatch(setProfile({
+             hphone_sw: switch,
+           }))
+         }}
+        />
+
+        */ }
+
         </View>
 
         <View style={{ flex: 1, flexDirection: 'row'}}>
@@ -133,7 +153,13 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch></Switch>
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({wphone_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.wphone_sw}
+        />
         </View>
 
         {/* Social Profiles */}
@@ -151,7 +177,13 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch></Switch>
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({fb_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.fb_sw}
+        />
         </View>
 
         <View style={{ flex: 1, flexDirection: 'row'}}>
@@ -166,7 +198,13 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch></Switch>
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({li_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.li_sw}
+        />
         </View>
 
         <View style={{ flex: 1, flexDirection: 'row'}}>
@@ -181,7 +219,13 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch></Switch>
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({ig_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.ig_sw}
+        />
         </View>
 
 
@@ -198,7 +242,13 @@ class Profile extends React.Component {
           }}
         />
 
-        <Switch></Switch>
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({sc_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.sc_sw}
+        />
         </View>
 
         <View style={{ flex: 1, flexDirection: 'row'}}>
@@ -214,7 +264,13 @@ class Profile extends React.Component {
           }}
         />
 
-        <Switch></Switch>
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({tw_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.tw_sw}
+        />
         </View>
 
         {/* Email */}
@@ -232,7 +288,13 @@ class Profile extends React.Component {
           }}
         />
 
-        <Switch></Switch>
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({hemail_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.hemail_sw}
+        />
         </View>
 
         <View style={{ flex: 1, flexDirection: 'row'}}>
@@ -246,13 +308,28 @@ class Profile extends React.Component {
             }))
           }}
         />
-
-        <Switch></Switch>
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({wemail_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.wemail_sw}
+        />
         </View>
 
         {/* Birthday */}
-        <FormLabel labelStyle={styles.label}>Birthday (MM/DD/YYYY)</FormLabel>
 
+        <View style={{ flex: 1, flexDirection: 'row',paddingTop: 5}}>
+          <FormLabel containerStyle={{ width: '85%'}} labelStyle={styles.label}>Birthday (MM/DD/YYYY)</FormLabel>
+            <Switch
+            onValueChange={isSwitchOn => {
+              this.setState({isSwitchOn});
+              this.props.dispatch(setProfile({bday_sw: isSwitchOn}))
+            }}
+            value={this.props.profile.bday_sw}
+          />
+
+        </View>
         <View style={{ flex: 1, flexDirection: 'row'}}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Month (MM)"
@@ -264,8 +341,6 @@ class Profile extends React.Component {
             }))
           }}
         />
-
-        <Switch></Switch>
         </View>
 
         <View style={{ flex: 1, flexDirection: 'row'}}>
@@ -279,8 +354,6 @@ class Profile extends React.Component {
             }))
           }}
         />
-
-        <Switch></Switch>
         </View>
 
         <View style={{ flex: 1, flexDirection: 'row'}}>
@@ -294,8 +367,6 @@ class Profile extends React.Component {
             }))
           }}
         />
-
-        <Switch></Switch>
         </View>
 
       </ScrollView>
@@ -318,11 +389,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '75%'
   }
-
-
 });
-
-
 
 
 // Connect component to Redux store
