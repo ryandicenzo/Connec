@@ -18,7 +18,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 // Import app tab components
 import Profile from './tabs/Profile';
 import Connec from './tabs/Connec';
-
+import Camera from './tabs/Camera';
 
 // Bottom Tab Menu
 const Navigator = createBottomTabNavigator(
@@ -26,6 +26,7 @@ const Navigator = createBottomTabNavigator(
   {
     Profile: Profile,
     Connec: Connec,
+    Camera: Camera
   },
   // Set menu icons
   {
@@ -37,6 +38,8 @@ const Navigator = createBottomTabNavigator(
           iconName = `person`;
         } else if (routeName === 'Connec') {
           iconName = `camera`;
+        } else if (routeName === 'Camera') {
+          iconName = 'camera-alt'
         }
 
         // Return standard Icon component from react-native-elements
