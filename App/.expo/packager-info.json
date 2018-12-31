@@ -3,7 +3,7 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://sw-fvv.ryandicenzo.app.exp.direct",
   "packagerNgrokUrl": "https://packager.sw-fvv.ryandicenzo.app.exp.direct",
-  "ngrokPid": 7004,
+  "ngrokPid": 1084,
   "packagerPort": 19001,
-  "packagerPid": 10568
+  "packagerPid": 13764
 }
