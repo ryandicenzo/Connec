@@ -162,7 +162,7 @@ class Connec extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    paddingTop : Constants.statusBarHeight * 1,
+    paddingTop : Constants.statusBarHeight * .65,
     backgroundColor : theme.colors.primary
   },
   category: {

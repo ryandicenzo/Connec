@@ -24,8 +24,8 @@ import Camera from './tabs/Camera';
 const Navigator = createBottomTabNavigator(
   // Set menu names and order (menuTitle, importedComponentName)
   {
-    Profile: Profile,
     Connec: Connec,
+    Profile: Profile,
     Camera: Camera
   },
   // Set menu icons

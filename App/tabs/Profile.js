@@ -87,7 +87,7 @@ class Profile extends React.Component {
 
         {/* Profile Photo
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Profile image link"
           defaultValue= {this.props.profile.avatar}
@@ -106,7 +106,7 @@ class Profile extends React.Component {
         {/* Phone */}
         <FormLabel labelStyle={styles.label}>Phone</FormLabel>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Personal phone"
           defaultValue= {this.props.profile.hphone}
@@ -142,7 +142,7 @@ class Profile extends React.Component {
 
         </View>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Work phone"
           defaultValue= {this.props.profile.wphone}
@@ -165,7 +165,7 @@ class Profile extends React.Component {
         {/* Social Profiles */}
         <FormLabel labelStyle={styles.label}>Social Profiles</FormLabel>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="Facebook"
@@ -186,7 +186,7 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="LinkedIn"
@@ -207,7 +207,7 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="Instagram"
@@ -229,7 +229,7 @@ class Profile extends React.Component {
         </View>
 
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="Snapchat"
@@ -251,7 +251,7 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
           placeholder="Twitter"
@@ -276,7 +276,7 @@ class Profile extends React.Component {
         {/* Email */}
         <FormLabel labelStyle={styles.label}>Email</FormLabel>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Personal email"
           defaultValue= {this.props.profile.homeemail}
@@ -297,7 +297,7 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Work / school email"
           defaultValue= {this.props.profile.workemail}
@@ -330,7 +330,7 @@ class Profile extends React.Component {
           />
 
         </View>
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Month (MM)"
           defaultValue= {this.props.profile.bmonth}
@@ -343,7 +343,7 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Day (DD)"
           defaultValue= {this.props.profile.bday}
@@ -356,7 +356,7 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={{ flex: 1, flexDirection: 'row'}}>
+        <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Year (YYYY)"
           defaultValue= {this.props.profile.byear}
@@ -377,7 +377,7 @@ class Profile extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    paddingTop : Constants.statusBarHeight,
+    paddingTop : Constants.statusBarHeight * .65,
     backgroundColor : theme.colors.primary
   },
 
@@ -388,6 +388,12 @@ const styles = StyleSheet.create({
 
   inputContainer: {
     width: '75%'
+  },
+
+  inputRow: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingTop: 3
   }
 });
 
