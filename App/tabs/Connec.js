@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert, Share, StyleSheet } from 'react-native';
+import { View, Alert, Share, StyleSheet, Platform } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
 import { Text, Header, Button, Icon } from 'react-native-elements';
 // Create QR code for a string
@@ -7,7 +7,7 @@ import QRCode from 'react-native-qrcode';
 // Connect components to Redux
 import { connect } from 'react-redux';
 import vcard from 'vcard-generator'
-import { FileSystem, Constants } from 'expo';
+import { FileSystem, Constants, IntentLauncherAndroid } from 'expo';
 
 const theme = {
   colors: {
@@ -19,121 +19,135 @@ const theme = {
 class Connec extends React.Component {
 
   constructVCard() {
-
     info = this.props.profile
 
-    var fname = info.fname
-    var lname = info.lname
-    var company = info.company
-    var hphone = info.hphone
-    var wphone = info.wphone
-    var homeemail = info.homeemail
-    var workemail = info.workemail
-    var homepage = info.homepage
-    /*var street = info.street
-    var city = info.city
-    var zip = info.zip
-    var country = info.country */
-    var byear = info.byear
-    var bmonth = info.bmonth
-    var bday = info.bday
+    if (!info.fname && !info.lname){
+      return 'please input your information'
+    } else {
 
-    var twitter = info.twitter
-    var facebook = info.facebook
-    var linkedin = info.linkedin
-    var snapchat = info.snapchat
-    var instagram = info.instagram
 
-    console.log(info.hphone_sw);
+      var fname = info.fname
+      var lname = info.lname
+      var company = info.company
+      var hphone = info.hphone
+      var wphone = info.wphone
+      var homeemail = info.homeemail
+      var workemail = info.workemail
+      var homepage = info.homepage
+      /*var street = info.street
+      var city = info.city
+      var zip = info.zip
+      var country = info.country */
+      var byear = info.byear
+      var bmonth = info.bmonth
+      var bday = info.bday
 
-    const vcardContent = vcard.generate({
-      name: {
-        familyName: lname,
-        givenName: fname,
-      },
-      works: [{
-        organization: company,
-      }],
-      emails: [{
-        type: 'work',
-        text: ((info.wemail_sw) ? workemail : ''),
-      }, {
-        type: 'home',
-        text: ((info.hemail_sw) ?  homeemail : ''),
-      }],
-      phones: [{
-        type: 'work',
-        text: ((info.wphone_sw) ? wphone : ''),
-      }, {
-        text: ((info.hphone_sw) ? hphone : ''),
-      }],
-      urls: [{
-        type: 'personal',
-        uri: homepage,
-      }, {
-        type: 'twitter',
-        uri: ((twitter && info.tw_sw) ? 'twitter.com/' + twitter : '')
-      },
-      {
-        type: 'facebook',
-        uri: ((facebook && info.fb_sw) ? 'facebook.com/' + facebook : '')
-      },
-      {
-        type: 'linkedin',
-        uri: ((linkedin && info.li_sw) ? 'linkedin.com/in/' + linkedin : '')
-      },
-      {
-        type: 'snapchat',
-        uri: ((snapchat && info.sc_sw) ? 'www.snapchat.com/add/' + snapchat : '')
-      },
-      {
-        type: 'instagram',
-        uri:((instagram && info.ig_sw) ? 'www.instagram.com/' + instagram : '')
-      }],
-      birthday : {
-        year: ((info.bday_sw) ? parseInt(byear) : ''),
-        month: ((info.bday_sw) ? parseInt(bmonth) : ''),
-        day: ((info.bday_sw) ? parseInt(bday) : '')
+      var twitter = info.twitter
+      var facebook = info.facebook
+      var linkedin = info.linkedin
+      var snapchat = info.snapchat
+      var instagram = info.instagram
+
+      const vcardContent = vcard.generate({
+        name: {
+          familyName: lname,
+          givenName: fname,
+        },
+        works: [{
+          organization: company,
+        }],
+        emails: [{
+          type: 'work',
+          text: ((info.wemail_sw) ? workemail : ''),
+        }, {
+          type: 'home',
+          text: ((info.hemail_sw) ?  homeemail : ''),
+        }],
+        phones: [{
+          type: 'work',
+          text: ((info.wphone_sw) ? wphone : ''),
+        }, {
+          text: ((info.hphone_sw) ? hphone : ''),
+        }],
+        urls: [{
+          type: 'personal',
+          uri: homepage,
+        }, {
+          type: 'twitter',
+          uri: ((twitter && info.tw_sw) ? 'twitter.com/' + twitter : '')
+        },
+        {
+          type: 'facebook',
+          uri: ((facebook && info.fb_sw) ? 'facebook.com/' + facebook : '')
+        },
+        {
+          type: 'linkedin',
+          uri: ((linkedin && info.li_sw) ? 'linkedin.com/in/' + linkedin : '')
+        },
+        {
+          type: 'snapchat',
+          uri: ((snapchat && info.sc_sw) ? 'www.snapchat.com/add/' + snapchat : '')
+        },
+        {
+          type: 'instagram',
+          uri:((instagram && info.ig_sw) ? 'www.instagram.com/' + instagram : '')
+        }],
+        birthday : {
+          year: ((info.bday_sw) ? parseInt(byear) : ''),
+          month: ((info.bday_sw) ? parseInt(bmonth) : ''),
+          day: ((info.bday_sw) ? parseInt(bday) : '')
+        }
+      })
+
+      this.fname = fname
+      this.lname = lname
+
+
+      if(this.fname != '') {
+        this.fname = fname.replace(/\s+/g, '');
       }
-    })
+      if(this.lname != ''){
+        this.lname = lname.replace(/\s+/g, '');
+      }
 
-    this.fname = fname
-    this.lname = lname
 
+      Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', vcardContent)
 
-    if(this.fname != '') {
-      this.fname = fname.replace(/\s+/g, '');
+      return vcardContent
     }
-    if(this.lname != ''){
-      this.lname = lname.replace(/\s+/g, '');
-    }
-
-
-    Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', vcardContent)
-
-    return vcardContent
-
   }
 
-  vCard = this.constructVCard()
-
   shareVCard()  {
-    const result = Share.share({
-          url:
-            FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', title: 'share',
-          })
-        }
+
+    var uri = FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', title: 'share'
+
+    if(Platform.OS == 'ios'){
+      const result = Share.share({
+        url: uri,
+      })
+    }
+
+    {/* else {
+       IntentLauncherAndroid.startActivityAsync('android.intent.action.PICK_CONTACT', {URI : uri});
+    }
+    // Android Sharing currently not functional */ }
+  }
+
 
   render() {
 
     this.vCard = this.constructVCard()
+
+    this.renderShare = (Platform.OS === 'ios')
+
 
     return (
       <View>
       <View style = {styles.header}>
         <Header
         centerComponent={{ text: 'c o n n e c', style: { color: '#fff', alignSelf: 'center', fontSize: 30} }}
-        rightComponent={<Icon name='send' color='white' onPress={() => this.shareVCard()} />}
+
+        rightComponent= { this.renderShare ? <Icon name='send' color='white' onPress={() => this.shareVCard()} /> : <View></View> }
 
         backgroundColor= 'theme.colors.primary'
         />

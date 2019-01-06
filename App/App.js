@@ -59,6 +59,7 @@ const Navigator = createBottomTabNavigator(
 // Provider: Boilerplate to make the Redux store available to all components by wrapping the top level component, Navigator
 export default class Root extends React.Component {
   render() {
+
     return (
       <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

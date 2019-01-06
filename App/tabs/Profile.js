@@ -17,7 +17,6 @@ const theme = {
   }
 }
 
-
 // Profile Tab
 class Profile extends React.Component {
   // Have component local state hold form field text
@@ -228,7 +227,6 @@ class Profile extends React.Component {
         />
         </View>
 
-
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
@@ -396,7 +394,6 @@ const styles = StyleSheet.create({
     paddingTop: 3
   }
 });
-
 
 // Connect component to Redux store
 export default connect(state => state)(Profile);
