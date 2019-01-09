@@ -47,6 +47,7 @@ class Connec extends React.Component {
       var linkedin = info.linkedin
       var snapchat = info.snapchat
       var instagram = info.instagram
+      var github = info.github
 
       const vcardContent = vcard.generate({
         name: {
@@ -71,7 +72,7 @@ class Connec extends React.Component {
         }],
         urls: [{
           type: 'personal',
-          uri: homepage,
+          uri: ((homepage && info.hp_sw) ? homepage : ''),
         }, {
           type: 'twitter',
           uri: ((twitter && info.tw_sw) ? 'twitter.com/' + twitter : '')
@@ -83,6 +84,10 @@ class Connec extends React.Component {
         {
           type: 'linkedin',
           uri: ((linkedin && info.li_sw) ? 'linkedin.com/in/' + linkedin : '')
+        },
+        {
+          type: 'github',
+          uri: ((github && info.gh_sw) ? 'www.github.com/' + github : '')
         },
         {
           type: 'snapchat',
@@ -123,7 +128,7 @@ class Connec extends React.Component {
 
     if(Platform.OS == 'ios'){
       const result = Share.share({
-        url: uri,
+        url: uri
       })
     }
 

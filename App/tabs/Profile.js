@@ -188,27 +188,6 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="LinkedIn"
-          defaultValue= {this.props.profile.linkedin}
-          onChangeText={(text) => {
-            this.setState({text});
-            this.props.dispatch(setProfile({
-              linkedin: text,
-            }))
-          }}
-        />
-        <Switch
-          onValueChange={isSwitchOn => {
-            this.setState({isSwitchOn});
-            this.props.dispatch(setProfile({li_sw: isSwitchOn}))
-          }}
-          value={this.props.profile.li_sw}
-        />
-        </View>
-
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          autoCapitalize='none'
           placeholder="Instagram"
           defaultValue= {this.props.profile.instagram}
           onChangeText={(text) => {
@@ -367,6 +346,71 @@ class Profile extends React.Component {
         />
         </View>
 
+        {/* Work Profiles */}
+        <FormLabel labelStyle={styles.label}>Work Profiles</FormLabel>
+
+        <View style={styles.inputRow}>
+        <FormInput containerStyle={styles.inputContainer}
+          autoCapitalize='none'
+          placeholder="LinkedIn"
+          defaultValue= {this.props.profile.linkedin}
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              linkedin: text,
+            }))
+          }}
+        />
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({li_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.li_sw}
+        />
+        </View>
+
+        <View style={styles.inputRow}>
+        <FormInput containerStyle={styles.inputContainer}
+          autoCapitalize='none'
+          placeholder="Personal Website"
+          defaultValue= {this.props.profile.homepage}
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              homepage: text,
+            }))
+          }}
+        />
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({hp_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.hp_sw}
+        />
+        </View>
+
+        <View style={styles.inputRow}>
+        <FormInput containerStyle={styles.inputContainer}
+          autoCapitalize='none'
+          placeholder="Github (Username)"
+          defaultValue= {this.props.profile.github}
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              github: text,
+            }))
+          }}
+        />
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({gh_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.gh_sw}
+        />
+        </View>
       </ScrollView>
       </KeyboardAvoidingView>
     );
