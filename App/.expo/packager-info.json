@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 9380,
+  "packagerPid": 11648,
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://3t-g7p.ryandicenzo.app.exp.direct",
   "packagerNgrokUrl": "https://packager.3t-g7p.ryandicenzo.app.exp.direct",
-  "ngrokPid": 2144,
-  "devToolsPort": 19002
+  "ngrokPid": 13528
 }

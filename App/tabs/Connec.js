@@ -108,10 +108,10 @@ class Connec extends React.Component {
       this.lname = lname
 
 
-      if(this.fname != '') {
+      if(this.fname) {
         this.fname = fname.replace(/\s+/g, '');
       }
-      if(this.lname != ''){
+      if(this.lname){
         this.lname = lname.replace(/\s+/g, '');
       }
 
@@ -151,9 +151,7 @@ class Connec extends React.Component {
       <View style = {styles.header}>
         <Header
         centerComponent={{ text: 'c o n n e c', style: { color: '#fff', alignSelf: 'center', fontSize: 30} }}
-
-        rightComponent= { this.renderShare ? <Icon name='send' color='white' onPress={() => this.shareVCard()} /> : <View></View> }
-
+        rightComponent= { this.renderShare ? <Icon name='send' color='white' onPress={() => this.shareVCard()} /> : null }
         backgroundColor= 'theme.colors.primary'
         />
         </View>
@@ -182,7 +180,7 @@ class Connec extends React.Component {
 const styles = StyleSheet.create({
   header: {
     paddingTop : Constants.statusBarHeight * .65,
-    backgroundColor : theme.colors.primary
+    backgroundColor : theme.colors.primary,
   },
   category: {
     fontSize: 16,
