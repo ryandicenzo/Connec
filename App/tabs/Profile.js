@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, View, ScrollView, KeyboardAvoidingView, StyleSheet, Switch} from 'react-native';
+import { TextInput, View, ScrollView, KeyboardAvoidingView, StyleSheet, Switch, Image } from 'react-native';
 // Components: https://react-native-training.github.io/react-native-elements/
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
 import { Text, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage, Avatar, CheckBox } from 'react-native-elements';
@@ -32,7 +32,19 @@ class Profile extends React.Component {
 
       <View style = {styles.header}>
         <Header
-        centerComponent={{ text: 'c o n n e c', style: { color: '#fff', alignSelf: 'center', fontSize: 30} }}
+        centerComponent={
+            <View>
+              <Image
+                resizeMode="cover"
+                style={{
+                  width: 300,
+                  height: 64,
+                  resizeMode: 'contain',
+                  alignSelf: 'center'}}
+                source={require('./../assets/connec_logo_logo_white.png')}
+            />
+          </View>
+          }
         backgroundColor= 'theme.colors.primary'
         />
         </View>
@@ -419,7 +431,7 @@ class Profile extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    paddingTop : Constants.statusBarHeight * .65,
+    paddingTop : Constants.statusBarHeight * 1.75,
     backgroundColor : theme.colors.primary
   },
 

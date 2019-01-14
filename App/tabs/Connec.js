@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert, Share, StyleSheet, Platform } from 'react-native';
+import { View, Alert, Share, StyleSheet, Platform, Image } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
 import { Text, Header, Button, Icon } from 'react-native-elements';
 // Create QR code for a string
@@ -107,6 +107,7 @@ class Connec extends React.Component {
       this.fname = fname
       this.lname = lname
 
+      // Remove white space from first and last nmae
 
       if(this.fname) {
         this.fname = fname.replace(/\s+/g, '');
@@ -115,6 +116,7 @@ class Connec extends React.Component {
         this.lname = lname.replace(/\s+/g, '');
       }
 
+      // Save .vcf file to be shared
 
       Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', vcardContent)
 
@@ -150,7 +152,19 @@ class Connec extends React.Component {
       <View>
       <View style = {styles.header}>
         <Header
-        centerComponent={{ text: 'c o n n e c', style: { color: '#fff', alignSelf: 'center', fontSize: 30} }}
+        centerComponent={
+          <View>
+          <Image
+            resizeMode="cover"
+            style={{
+              width: 300,
+              height: 64,
+              resizeMode: 'contain',
+              alignSelf: 'center'}}
+            source={require('./../assets/connec_logo_logo_white.png')}
+        />
+        </View>
+      }
         rightComponent= { this.renderShare ? <Icon name='send' color='white' onPress={() => this.shareVCard()} /> : null }
         backgroundColor= 'theme.colors.primary'
         />
@@ -179,7 +193,7 @@ class Connec extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    paddingTop : Constants.statusBarHeight * .65,
+    paddingTop : Constants.statusBarHeight * 1.75,
     backgroundColor : theme.colors.primary,
   },
   category: {
