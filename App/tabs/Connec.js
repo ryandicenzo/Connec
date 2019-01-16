@@ -178,13 +178,9 @@ class Connec extends React.Component {
             //fgColor='black'
           />
           <View style={{paddingBottom: '10%'}}/>
-          <Text style={styles.category}>iPhone (iOS 11+):</Text>
-          <Text style={styles.body}>Open camera and Scan!</Text>
-          <Text style={styles.category}>Android</Text>
-          <Text style={styles.body}>On Android 6.0+, Use your Default Camera</Text>
-          <Text style={styles.body}>Do you have Google Assistant?</Text>
-          <Text style={styles.body}>Open Assistant and click the lower right icon!</Text>
-
+          <Text style={styles.category}>How to Share</Text>
+          <Text style={styles.body}>Open any QR capable camera and scan!</Text>
+          <Text style={styles.body}>The code will load as a contact ready to add.</Text>
         </View>
       </View>
     );

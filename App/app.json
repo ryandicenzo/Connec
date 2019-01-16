@@ -25,7 +25,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.dicenzo.connec"
+      "bundleIdentifier": "com.dicenzo.connec",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Connec uses the camera to scan and add QR generated contacts"
+      },
     },
     "android": {
       "package": "com.dicenzo.connec"
