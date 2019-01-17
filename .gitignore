@@ -1,5 +1,6 @@
 # Expo
-.expo
+.expo/
+App/.expo/
 __generated__
 
 # Xcode
