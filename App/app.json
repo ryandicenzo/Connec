@@ -31,7 +31,8 @@
       },
     },
     "android": {
-      "package": "com.dicenzo.connec"
+      "package": "com.dicenzo.connec",
+      "versionCode": 2
     }
   }
 }
