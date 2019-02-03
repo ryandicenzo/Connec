@@ -1,12 +1,15 @@
 {
   "expo": {
-    "name": "App",
-    "description": "This project is really great.",
-    "slug": "App",
+    "name": "Connec",
+    "description": "",
+    "slug": "connec_v1",
     "privacy": "public",
     "sdkVersion": "31.0.0",
-    "platforms": ["ios", "android"],
-    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -21,7 +24,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dicenzo.connec",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Connec uses the camera to scan QR generated contacts"
+      },
+    },
+    "android": {
+      "package": "com.dicenzo.connec"
     }
   }
 }

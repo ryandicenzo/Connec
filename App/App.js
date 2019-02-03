@@ -18,14 +18,15 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 // Import app tab components
 import Profile from './tabs/Profile';
 import Connec from './tabs/Connec';
-
+import Camera from './tabs/Camera';
 
 // Bottom Tab Menu
 const Navigator = createBottomTabNavigator(
   // Set menu names and order (menuTitle, importedComponentName)
   {
-    Profile: Profile,
     Connec: Connec,
+    Profile: Profile,
+    Camera: Camera
   },
   // Set menu icons
   {
@@ -37,6 +38,8 @@ const Navigator = createBottomTabNavigator(
           iconName = `person`;
         } else if (routeName === 'Connec') {
           iconName = `camera`;
+        } else if (routeName === 'Camera') {
+          iconName = 'camera-alt'
         }
 
         // Return standard Icon component from react-native-elements
@@ -56,6 +59,7 @@ const Navigator = createBottomTabNavigator(
 // Provider: Boilerplate to make the Redux store available to all components by wrapping the top level component, Navigator
 export default class Root extends React.Component {
   render() {
+
     return (
       <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
