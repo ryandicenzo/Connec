@@ -179,7 +179,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Facebook"
+          placeholder="Facebook (facebook.com/username)"
           defaultValue= {this.props.profile.facebook}
           onChangeText={(text) => {
             this.setState({text});
@@ -200,7 +200,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Instagram"
+          placeholder="Instagram (username)"
           defaultValue= {this.props.profile.instagram}
           onChangeText={(text) => {
             this.setState({text});
@@ -221,7 +221,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Snapchat"
+          placeholder="Snapchat (username)"
           defaultValue= {this.props.profile.snapchat}
           onChangeText={(text) => {
             this.setState({text});
@@ -243,7 +243,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Twitter"
+          placeholder="Twitter (username)"
           defaultValue= {this.props.profile.twitter}
           onChangeText={(text) => {
             this.setState({text});
@@ -364,7 +364,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="LinkedIn"
+          placeholder="LinkedIn (username)"
           defaultValue= {this.props.profile.linkedin}
           onChangeText={(text) => {
             this.setState({text});
@@ -406,7 +406,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Github (Username)"
+          placeholder="Github (username)"
           defaultValue= {this.props.profile.github}
           onChangeText={(text) => {
             this.setState({text});

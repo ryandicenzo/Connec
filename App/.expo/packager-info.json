@@ -1,18 +1,9 @@
 {
   "packagerPort": 19001,
-<<<<<<< HEAD
-  "packagerPid": 1656,
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://n7-8gf.anonymous.app.exp.direct",
-  "packagerNgrokUrl": "https://packager.n7-8gf.anonymous.app.exp.direct",
-  "ngrokPid": 10412,
-  "devToolsPort": 19002
-=======
   "packagerPid": 6860,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://ys-b2t.ryandicenzo.app.exp.direct",
   "packagerNgrokUrl": "https://packager.ys-b2t.ryandicenzo.app.exp.direct",
   "ngrokPid": 4228
->>>>>>> 70013515ee0083fc4880c5e4a0b57a41576f981a
 }
