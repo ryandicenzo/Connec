@@ -1,9 +1,9 @@
 {
   "packagerPort": 19001,
-  "packagerPid": 6860,
+  "packagerPid": 22080,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://ys-b2t.ryandicenzo.app.exp.direct",
-  "packagerNgrokUrl": "https://packager.ys-b2t.ryandicenzo.app.exp.direct",
-  "ngrokPid": 4228
+  "expoServerNgrokUrl": "https://n7-8gf.anonymous.app.exp.direct",
+  "packagerNgrokUrl": "https://packager.n7-8gf.anonymous.app.exp.direct",
+  "ngrokPid": 16016
 }
