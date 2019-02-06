@@ -79,7 +79,7 @@ class Connec extends React.Component {
         },
         {
           type: 'facebook',
-          uri: ((facebook && info.fb_sw) ? 'facebook.com/' + facebook : '')
+          uri: ((facebook && info.fb_sw) ? facebook : '')
         },
         {
           type: 'linkedin',

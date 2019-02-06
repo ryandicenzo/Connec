@@ -64,7 +64,7 @@ class Profile extends React.Component {
         <FormLabel labelStyle={styles.label}>Contact</FormLabel>
 
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="First name"
+          placeholder="First Name"
           defaultValue= {this.props.profile.fname}
           onChangeText={(text) => {
             this.setState({text});
@@ -75,7 +75,7 @@ class Profile extends React.Component {
         />
 
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Last name"
+          placeholder="Last Name"
           defaultValue= {this.props.profile.lname}
           onChangeText={(text) => {
             this.setState({text});
@@ -86,7 +86,7 @@ class Profile extends React.Component {
         />
 
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Company / organization"
+          placeholder="Company / Organization"
           defaultValue= {this.props.profile.company}
           onChangeText={(text) => {
             this.setState({text});
@@ -119,7 +119,7 @@ class Profile extends React.Component {
 
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Personal phone"
+          placeholder="Personal Phone"
           defaultValue= {this.props.profile.hphone}
           onChangeText={(text) => {
             this.setState({text});
@@ -155,7 +155,7 @@ class Profile extends React.Component {
 
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Work phone"
+          placeholder="Work Phone"
           defaultValue= {this.props.profile.wphone}
           onChangeText={(text) => {
             this.setState({text});
@@ -179,7 +179,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Facebook (facebook.com/username)"
+          placeholder="Facebook (full profile link)"
           defaultValue= {this.props.profile.facebook}
           onChangeText={(text) => {
             this.setState({text});
@@ -337,7 +337,7 @@ class Profile extends React.Component {
 
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Personal email"
+          placeholder="Personal Email"
           defaultValue= {this.props.profile.homeemail}
           onChangeText={(text) => {
             this.setState({text});
@@ -358,7 +358,7 @@ class Profile extends React.Component {
 
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Work / school email"
+          placeholder="Work / School Email"
           defaultValue= {this.props.profile.workemail}
           onChangeText={(text) => {
             this.setState({text});
@@ -379,7 +379,7 @@ class Profile extends React.Component {
         {/* Birthday */}
 
         <View style={{ flex: 1, flexDirection: 'row',paddingTop: 5}}>
-          <FormLabel containerStyle={{ width: '85%'}} labelStyle={styles.label}>Birthday (MM/DD/YYYY)</FormLabel>
+          <FormLabel containerStyle={{ width: '85%'}} labelStyle={styles.label}>Birthday (all fields required)</FormLabel>
             <Switch
             onValueChange={isSwitchOn => {
               this.setState({isSwitchOn});
