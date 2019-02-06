@@ -179,8 +179,9 @@ class Connec extends React.Component {
           />
           <View style={{paddingBottom: '10%'}}/>
           <Text style={styles.category}>How to Share</Text>
-          <Text style={styles.body}>Open any QR capable camera and scan!</Text>
-          <Text style={styles.body}>The code will load as a contact ready to add.</Text>
+          <Text style={styles.body}>Open any QR-capable camera and scan!</Text>
+          <Text style={styles.body}>The QR code will load as a contact that is ready to add.</Text>
+          <Text style={styles.body}>Alternatively, click the send button on the upper right to share via AirDrop, Messages, Email, and more.</Text>
         </View>
       </View>
     );
