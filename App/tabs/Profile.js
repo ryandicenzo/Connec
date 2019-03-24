@@ -64,7 +64,7 @@ class Profile extends React.Component {
         <FormLabel labelStyle={styles.label}>Contact</FormLabel>
 
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="First name"
+          placeholder="First Name"
           defaultValue= {this.props.profile.fname}
           onChangeText={(text) => {
             this.setState({text});
@@ -75,7 +75,7 @@ class Profile extends React.Component {
         />
 
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Last name"
+          placeholder="Last Name"
           defaultValue= {this.props.profile.lname}
           onChangeText={(text) => {
             this.setState({text});
@@ -86,7 +86,7 @@ class Profile extends React.Component {
         />
 
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Company / organization"
+          placeholder="Company / Organization"
           defaultValue= {this.props.profile.company}
           onChangeText={(text) => {
             this.setState({text});
@@ -119,7 +119,7 @@ class Profile extends React.Component {
 
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Personal phone"
+          placeholder="Personal Phone"
           defaultValue= {this.props.profile.hphone}
           onChangeText={(text) => {
             this.setState({text});
@@ -155,7 +155,7 @@ class Profile extends React.Component {
 
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Work phone"
+          placeholder="Work Phone"
           defaultValue= {this.props.profile.wphone}
           onChangeText={(text) => {
             this.setState({text});
@@ -179,7 +179,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Facebook"
+          placeholder="Facebook (full profile link)"
           defaultValue= {this.props.profile.facebook}
           onChangeText={(text) => {
             this.setState({text});
@@ -200,7 +200,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Instagram"
+          placeholder="Instagram (username)"
           defaultValue= {this.props.profile.instagram}
           onChangeText={(text) => {
             this.setState({text});
@@ -221,7 +221,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Snapchat"
+          placeholder="Snapchat (username)"
           defaultValue= {this.props.profile.snapchat}
           onChangeText={(text) => {
             this.setState({text});
@@ -243,7 +243,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           autoCapitalize='none'
-          placeholder="Twitter"
+          placeholder="Twitter (username)"
           defaultValue= {this.props.profile.twitter}
           onChangeText={(text) => {
             this.setState({text});
@@ -262,12 +262,82 @@ class Profile extends React.Component {
         />
         </View>
 
+
+
+        {/* Work Profiles */}
+        <FormLabel labelStyle={styles.label}>Work Profiles</FormLabel>
+
+        <View style={styles.inputRow}>
+        <FormInput containerStyle={styles.inputContainer}
+          autoCapitalize='none'
+          placeholder="LinkedIn (username)"
+          defaultValue= {this.props.profile.linkedin}
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              linkedin: text,
+            }))
+          }}
+        />
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({li_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.li_sw}
+        />
+        </View>
+
+        <View style={styles.inputRow}>
+        <FormInput containerStyle={styles.inputContainer}
+          autoCapitalize='none'
+          placeholder="Personal Website"
+          defaultValue= {this.props.profile.homepage}
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              homepage: text,
+            }))
+          }}
+        />
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({hp_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.hp_sw}
+        />
+        </View>
+
+        <View style={styles.inputRow}>
+        <FormInput containerStyle={styles.inputContainer}
+          autoCapitalize='none'
+          placeholder="Github (username)"
+          defaultValue= {this.props.profile.github}
+          onChangeText={(text) => {
+            this.setState({text});
+            this.props.dispatch(setProfile({
+              github: text,
+            }))
+          }}
+        />
+        <Switch
+          onValueChange={isSwitchOn => {
+            this.setState({isSwitchOn});
+            this.props.dispatch(setProfile({gh_sw: isSwitchOn}))
+          }}
+          value={this.props.profile.gh_sw}
+        />
+        </View>
+
+
+
         {/* Email */}
         <FormLabel labelStyle={styles.label}>Email</FormLabel>
 
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Personal email"
+          placeholder="Personal Email"
           defaultValue= {this.props.profile.homeemail}
           onChangeText={(text) => {
             this.setState({text});
@@ -288,7 +358,7 @@ class Profile extends React.Component {
 
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
-          placeholder="Work / school email"
+          placeholder="Work / School Email"
           defaultValue= {this.props.profile.workemail}
           onChangeText={(text) => {
             this.setState({text});
@@ -309,7 +379,7 @@ class Profile extends React.Component {
         {/* Birthday */}
 
         <View style={{ flex: 1, flexDirection: 'row',paddingTop: 5}}>
-          <FormLabel containerStyle={{ width: '85%'}} labelStyle={styles.label}>Birthday (MM/DD/YYYY)</FormLabel>
+          <FormLabel containerStyle={{ width: '85%'}} labelStyle={styles.label}>Birthday (all fields required)</FormLabel>
             <Switch
             onValueChange={isSwitchOn => {
               this.setState({isSwitchOn});
@@ -358,71 +428,6 @@ class Profile extends React.Component {
         />
         </View>
 
-        {/* Work Profiles */}
-        <FormLabel labelStyle={styles.label}>Work Profiles</FormLabel>
-
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          autoCapitalize='none'
-          placeholder="LinkedIn"
-          defaultValue= {this.props.profile.linkedin}
-          onChangeText={(text) => {
-            this.setState({text});
-            this.props.dispatch(setProfile({
-              linkedin: text,
-            }))
-          }}
-        />
-        <Switch
-          onValueChange={isSwitchOn => {
-            this.setState({isSwitchOn});
-            this.props.dispatch(setProfile({li_sw: isSwitchOn}))
-          }}
-          value={this.props.profile.li_sw}
-        />
-        </View>
-
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          autoCapitalize='none'
-          placeholder="Personal Website"
-          defaultValue= {this.props.profile.homepage}
-          onChangeText={(text) => {
-            this.setState({text});
-            this.props.dispatch(setProfile({
-              homepage: text,
-            }))
-          }}
-        />
-        <Switch
-          onValueChange={isSwitchOn => {
-            this.setState({isSwitchOn});
-            this.props.dispatch(setProfile({hp_sw: isSwitchOn}))
-          }}
-          value={this.props.profile.hp_sw}
-        />
-        </View>
-
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          autoCapitalize='none'
-          placeholder="Github (Username)"
-          defaultValue= {this.props.profile.github}
-          onChangeText={(text) => {
-            this.setState({text});
-            this.props.dispatch(setProfile({
-              github: text,
-            }))
-          }}
-        />
-        <Switch
-          onValueChange={isSwitchOn => {
-            this.setState({isSwitchOn});
-            this.props.dispatch(setProfile({gh_sw: isSwitchOn}))
-          }}
-          value={this.props.profile.gh_sw}
-        />
-        </View>
       </ScrollView>
       </KeyboardAvoidingView>
     );
