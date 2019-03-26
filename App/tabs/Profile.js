@@ -378,7 +378,7 @@ class Profile extends React.Component {
 
         {/* Birthday */}
 
-        <View style={{ flex: 1, flexDirection: 'row',paddingTop: 5}}>
+        <View style={styles.inputRow}>
           <FormLabel containerStyle={{ width: '85%'}} labelStyle={styles.label}>Birthday (all fields required)</FormLabel>
             <Switch
             onValueChange={isSwitchOn => {
