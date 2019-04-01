@@ -47,12 +47,12 @@ class Connec extends React.Component {
       var byear = helper(info.bday_sw, info.byear)
       var bmonth = helper(info.bday_sw, info.bmonth)
       var bday = helper(info.bday_sw, info.bday)
-      var twitter = helper(info.tw_sw, info.twitter)
-      var facebook = helper(info.fb_sw, 'www.facebook.com/' + info.facebook)
+      var twitter = helper(info.tw_sw, 'www.twitter.com/' + info.twitter)
+      var facebook = helper(info.fb_sw, info.facebook)
       var linkedin = helper(info.li_sw, 'www.linkedin.com/in/' + info.linkedin)
       var snapchat = helper(info.sc_sw, 'www.snapchat.com/add/' + info.snapchat)
-      var instagram = helper(info.ig_sw, 'www.instagram.com/' + info.instagram)
-      var github = helper(info.gh_sw, 'www.github.com/' + info.github)
+      var instagram = helper(info.ig_sw, 'instagram.com/' + info.instagram)
+      var github = helper(info.gh_sw, 'github.com/' + info.github)
 
       contact.firstName = fname
       contact.lastName = lname
@@ -60,13 +60,13 @@ class Connec extends React.Component {
       contact.workPhone = wphone
       contact.email = homeemail
       contact.workEmail = workemail
-      contact.url = homepage
-      contact.socialUrls['Facebook'] = facebook
-      contact.socialUrls['LinkedIn'] = linkedin
-      contact.socialUrls['Twitter'] = twitter
-      contact.socialUrls['Snapchat'] = snapchat
-      contact.socialUrls['Github'] = github
-      contact.socialUrls['Instagram'] = instagram
+      contact.url['Homepage'] = homepage
+      contact.url['Facebook'] = facebook
+      contact.url['LinkedIn'] = linkedin
+      contact.url['Twitter'] = twitter
+      contact.url['Snapchat'] = snapchat
+      contact.url['Github'] = github
+      contact.url['Instagram'] = instagram
       contact.organization = company
       contact.birthday = helper(info.bday_sw, new Date(byear, bmonth, bday))
 

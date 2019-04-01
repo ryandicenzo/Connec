@@ -103,6 +103,15 @@ var vCard = (function () {
         };
     }
 
+    function getUrls() {
+        return {
+            'facebook': '',
+            'linkedIn': '',
+            'twitter': '',
+            'flickr': ''
+        };
+    }
+
     /********************************************************************************
      * Public interface for vCard
      ********************************************************************************/
@@ -262,7 +271,7 @@ var vCard = (function () {
          * URL pointing to a website that represents the person in some way
          * @type {String}
          */
-        url: '',
+        url: getUrls(),
 
         /**
          * URL pointing to a website that represents the person's work in some way

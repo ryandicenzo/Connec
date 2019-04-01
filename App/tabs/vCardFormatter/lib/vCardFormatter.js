@@ -360,7 +360,19 @@
 			}
 
 			if (vCard.url) {
-				formattedVCardString += 'URL' + encodingPrefix + ':' + e(vCard.url) + nl();
+				var itemNum = 1
+
+				for (var key in vCard.url) {
+					if (vCard.url.hasOwnProperty(key) &&
+						vCard.url[key]) {
+							
+						formattedVCardString += 'item' + itemNum + '.URL: ' + e(vCard.url[key]) + nl();
+						formattedVCardString += 'item' + itemNum + '.X-ABLabel: ' + e(key) + nl();
+						itemNum++;
+					}
+				}
+
+				//formattedVCardString += 'URL' + encodingPrefix + ':' + e(vCard.url) + nl();
 			}
 
 			if (vCard.workUrl) {
