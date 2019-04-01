@@ -50,7 +50,7 @@ class Connec extends React.Component {
       var twitter = helper(info.tw_sw, info.twitter)
       var facebook = helper(info.fb_sw, 'www.facebook.com/' + info.facebook)
       var linkedin = helper(info.li_sw, 'www.linkedin.com/in/' + info.linkedin)
-      var snapchat = helper(info.sc_sw, 'www.snapchat.com/add' + info.snapchat)
+      var snapchat = helper(info.sc_sw, 'www.snapchat.com/add/' + info.snapchat)
       var instagram = helper(info.ig_sw, 'www.instagram.com/' + info.instagram)
       var github = helper(info.gh_sw, 'www.github.com/' + info.github)
 
