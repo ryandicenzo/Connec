@@ -6,7 +6,7 @@ import { Text, Header, Button, Icon } from 'react-native-elements';
 import QRCode from 'react-native-qrcode';
 // Connect components to Redux
 import { connect } from 'react-redux';
-import vcard from 'vcard-generator'
+// import vcard from 'vcard-generator'
 import { FileSystem, Constants, IntentLauncherAndroid } from 'expo';
 
 const theme = {
@@ -18,6 +18,13 @@ const theme = {
 // Connec Tab: QR code display
 class Connec extends React.Component {
 
+  switchHelper(switchVal, returnVal) {
+    if (!switchVal) {
+      return '';
+    }
+    return returnVal;
+  }
+
   constructVCard() {
     info = this.props.profile
 
@@ -25,84 +32,43 @@ class Connec extends React.Component {
       return 'please input your information'
     } else {
 
+      var vCard = require('./vCardFormatter/index.js')
+      var helper = this.switchHelper
+      var contact = new vCard()
 
       var fname = info.fname
       var lname = info.lname
       var company = info.company
-      var hphone = info.hphone
-      var wphone = info.wphone
-      var homeemail = info.homeemail
-      var workemail = info.workemail
-      var homepage = info.homepage
-      /*var street = info.street
-      var city = info.city
-      var zip = info.zip
-      var country = info.country */
-      var byear = info.byear
-      var bmonth = info.bmonth
-      var bday = info.bday
+      var hphone = helper(info.hphone_sw, info.hphone)
+      var wphone = helper(info.wphone_sw, info.wphone)
+      var homeemail = helper(info.hemail_sw, info.homeemail)
+      var workemail = helper(info.wemail_sw, info.workemail)
+      var homepage = helper(info.hp_sw, info.homepage)
+      var byear = helper(info.bday_sw, info.byear)
+      var bmonth = helper(info.bday_sw, info.bmonth)
+      var bday = helper(info.bday_sw, info.bday)
+      var twitter = helper(info.tw_sw, info.twitter)
+      var facebook = helper(info.fb_sw, info.facebook)
+      var linkedin = helper(info.li_sw, info.linkedin)
+      var snapchat = helper(info.sc_sw, info.snapchat)
+      var instagram = helper(info.ig_sw, info.instagram)
+      var github = helper(info.gh_sw, info.github)
 
-      var twitter = info.twitter
-      var facebook = info.facebook
-      var linkedin = info.linkedin
-      var snapchat = info.snapchat
-      var instagram = info.instagram
-      var github = info.github
-
-      const vcardContent = vcard.generate({
-        name: {
-          familyName: lname,
-          givenName: fname,
-        },
-        works: [{
-          organization: company,
-        }],
-        emails: [{
-          type: 'work',
-          text: ((info.wemail_sw) ? workemail : ''),
-        }, {
-          type: 'home',
-          text: ((info.hemail_sw) ?  homeemail : ''),
-        }],
-        phones: [{
-          type: 'work',
-          text: ((info.wphone_sw) ? wphone : ''),
-        }, {
-          text: ((info.hphone_sw) ? hphone : ''),
-        }],
-        urls: [{
-          type: 'personal',
-          uri: ((homepage && info.hp_sw) ? homepage : ''),
-        }, {
-          type: 'twitter',
-          uri: ((twitter && info.tw_sw) ? 'twitter.com/' + twitter : '')
-        },
-        {
-          type: 'facebook',
-          uri: ((facebook && info.fb_sw) ? facebook : '')
-        },
-        {
-          type: 'linkedin',
-          uri: ((linkedin && info.li_sw) ? 'linkedin.com/in/' + linkedin : '')
-        },
-        {
-          type: 'github',
-          uri: ((github && info.gh_sw) ? 'www.github.com/' + github : '')
-        },
-        {
-          type: 'snapchat',
-          uri: ((snapchat && info.sc_sw) ? 'www.snapchat.com/add/' + snapchat : '')
-        },
-        {
-          type: 'instagram',
-          uri:((instagram && info.ig_sw) ? 'www.instagram.com/' + instagram : '')
-        }],
-        birthday : {
-          year: ((info.bday_sw) ? parseInt(byear) : ''),
-          month: ((info.bday_sw) ? parseInt(bmonth) : ''),
-          day: ((info.bday_sw) ? parseInt(bday) : '')
-        }
-      })
+      contact.firstName = fname
+      contact.lastName = lname
+      contact.homePhone = hphone
+      contact.workPhone = wphone
+      contact.email = homeemail
+      contact.workEmail = workemail
+      contact.url = homepage
+      contact.socialUrls['facebook'] = facebook
+      contact.socialUrls['linkedIn'] = linkedin
+      contact.socialUrls['twitter'] = twitter
+      contact.socialUrls['snapchat'] = snapchat
+      contact.socialUrls['github'] = github
+      contact.socialUrls['instagram'] = instagram
+      contact.organization = company
+      contact.birthday = helper(info.bday_sw, new Date(byear, bmonth, bday))
 
       this.fname = fname
       this.lname = lname
@@ -118,9 +84,9 @@ class Connec extends React.Component {
 
       // Save .vcf file to be shared
 
-      Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', vcardContent)
+      Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', contact.getFormattedString())
 
-      return vcardContent
+      return contact.getFormattedString()
     }
   }
 
