@@ -174,21 +174,23 @@ class Profile extends React.Component {
         </View>
 
         {/* Social Profiles */}
-        <FormLabel labelStyle={styles.label}>Social Profiles</FormLabel>
-
+        <FormLabel labelStyle={styles.label}>Social Profiles</FormLabel>  
         <View style={styles.inputRowSocial}>
             <Icon name='facebook' type='material-community' color='#517fa4'/>
-            <FormInput containerStyle={styles.inputContainerIcon}
-          autoCapitalize='none'
-          placeholder="Facebook (full profile link)"
-          defaultValue= {this.props.profile.facebook}
-          onChangeText={(text) => {
-            this.setState({text});
-            this.props.dispatch(setProfile({
-              facebook: text,
-            }))
-          }}
-        />
+            <View style={{ flex: 1 }}>
+              <FormInput containerStyle={styles.inputContainerIcon}
+                autoCapitalize='none'
+                placeholder="Facebook (full profile link)"
+                defaultValue={this.props.profile.facebook}
+                onChangeText={(text) => {
+                  this.setState({ text });
+                  this.props.dispatch(setProfile({
+                    facebook: text,
+                  }))
+                }}
+              />  
+            </View>
+            
         <Switch
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
@@ -453,11 +455,11 @@ const styles = StyleSheet.create({
   },
 
   inputContainer: {
-    width: '75%'
+    width: '75%',
   },
   
   inputContainerIcon: {
-    width: '67%'
+    width: '67%',
   },
 
   inputRow: {
