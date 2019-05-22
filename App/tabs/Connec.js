@@ -6,7 +6,7 @@ import { Text, Header, Button, Icon } from 'react-native-elements';
 import QRCode from 'react-native-qrcode';
 // Connect components to Redux
 import { connect } from 'react-redux';
-import vcard from 'vcard-generator'
+// import vcard from 'vcard-generator'
 import { FileSystem, Constants, IntentLauncherAndroid } from 'expo';
 
 const theme = {
@@ -18,6 +18,13 @@ const theme = {
 // Connec Tab: QR code display
 class Connec extends React.Component {
 
+  switchHelper(switchVal, returnVal) {
+    if (!switchVal) {
+      return '';
+    }
+    return returnVal;
+  }
+
   constructVCard() {
     info = this.props.profile
 
@@ -25,85 +32,43 @@ class Connec extends React.Component {
       return 'please input your information'
     } else {
 
+      var vCard = require('./vCardFormatter/index.js')
+      var helper = this.switchHelper
+      var contact = new vCard()
 
       var fname = info.fname
       var lname = info.lname
       var company = info.company
-      var hphone = info.hphone
-      var wphone = info.wphone
-      var homeemail = info.homeemail
-      var workemail = info.workemail
-      var homepage = info.homepage
-      /*var street = info.street
-      var city = info.city
-      var zip = info.zip
-      var country = info.country */
-      var byear = info.byear
-      var bmonth = info.bmonth
-      var bday = info.bday
+      var hphone = helper(info.hphone_sw, info.hphone)
+      var wphone = helper(info.wphone_sw, info.wphone)
+      var homeemail = helper(info.hemail_sw, info.homeemail)
+      var workemail = helper(info.wemail_sw, info.workemail)
+      var homepage = helper(info.hp_sw, info.homepage)
+      var byear = helper(info.bday_sw, info.byear)
+      var bmonth = helper(info.bday_sw, info.bmonth)
+      var bday = helper(info.bday_sw, info.bday)
+      var twitter = helper(info.tw_sw, 'www.twitter.com/' + info.twitter)
+      var facebook = helper(info.fb_sw, info.facebook)
+      var linkedin = helper(info.li_sw, 'www.linkedin.com/in/' + info.linkedin)
+      var snapchat = helper(info.sc_sw, 'www.snapchat.com/add/' + info.snapchat)
+      var instagram = helper(info.ig_sw, 'instagram.com/' + info.instagram)
+      var github = helper(info.gh_sw, 'github.com/' + info.github)
 
-      var twitter = info.twitter
-      var facebook = info.facebook
-      var linkedin = info.linkedin
-      var snapchat = info.snapchat
-      var instagram = info.instagram
-      var github = info.github
-
-      const vcardContent = vcard.generate({
-        name: {
-          familyName: lname,
-          givenName: fname,
-        },
-        works: [{
-          organization: company,
-        }],
-        emails: [{
-          type: 'WORK',
-          text: ((info.wemail_sw) ? workemail : ''),
-        }, {
-          type: 'HOME',
-          text: ((info.hemail_sw) ?  homeemail : ''),
-        }],
-        phones: [{
-          type: 'WORK',          
-          text: ((info.wphone_sw) ? wphone : ''),
-        }, {
-          type: 'HOME',
-          text: ((info.hphone_sw) ? hphone : ''),
-        }],
-        urls: [{
-          type: 'personal',
-          uri: ((homepage && info.hp_sw) ? homepage : ''),
-        }, {
-          type: 'twitter',
-          uri: ((twitter && info.tw_sw) ? 'twitter.com/' + twitter : '')
-        },
-        {
-          type: 'facebook',
-          uri: ((facebook && info.fb_sw) ? facebook : '')
-        },
-        {
-          type: 'linkedin',
-          uri: ((linkedin && info.li_sw) ? 'linkedin.com/in/' + linkedin : '')
-        },
-        {
-          type: 'github',
-          uri: ((github && info.gh_sw) ? 'www.github.com/' + github : '')
-        },
-        {
-          type: 'snapchat',
-          uri: ((snapchat && info.sc_sw) ? 'www.snapchat.com/add/' + snapchat : '')
-        },
-        {
-          type: 'instagram',
-          uri:((instagram && info.ig_sw) ? 'www.instagram.com/' + instagram : '')
-        }],
-        birthday : {
-          year: ((info.bday_sw) ? parseInt(byear) : ''),
-          month: ((info.bday_sw) ? parseInt(bmonth) : ''),
-          day: ((info.bday_sw) ? parseInt(bday) : '')
-        }
-      })
+      contact.firstName = fname
+      contact.lastName = lname
+      contact.homePhone = hphone
+      contact.workPhone = wphone
+      contact.email = homeemail
+      contact.workEmail = workemail
+      contact.url['Homepage'] = homepage
+      contact.url['Facebook'] = facebook
+      contact.url['LinkedIn'] = linkedin
+      contact.url['Twitter'] = twitter
+      contact.url['Snapchat'] = snapchat
+      contact.url['Github'] = github
+      contact.url['Instagram'] = instagram
+      contact.organization = company
+      contact.birthday = helper(info.bday_sw, new Date(byear, bmonth, bday))
 
       this.fname = fname
       this.lname = lname
@@ -119,9 +84,9 @@ class Connec extends React.Component {
 
       // Save .vcf file to be shared
 
-      Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', vcardContent)
+      Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', contact.getFormattedString())
 
-      return vcardContent
+      return contact.getFormattedString()
     }
   }
 
@@ -145,8 +110,7 @@ class Connec extends React.Component {
   render() {
 
     this.vCard = this.constructVCard()
-    console.log(this.vCard);
-    
+
     this.renderShare = (Platform.OS === 'ios')
 
 
@@ -155,24 +119,22 @@ class Connec extends React.Component {
       <View style = {styles.header}>
         <Header
         centerComponent={
-          <View>
           <Image
             resizeMode="cover"
             style={{
-              width: 300,
-              height: 64,
-              resizeMode: 'contain',
-              alignSelf: 'center'}}
+              flex: 1,
+              resizeMode: 'cover',
+
+              aspectRatio: 2}}
             source={require('./../assets/connec_logo_logo_white.png')}
         />
-        </View>
       }
         rightComponent= { this.renderShare ? <Icon name='send' color='white' onPress={() => this.shareVCard()} /> : null }
         backgroundColor= 'theme.colors.primary'
         />
         </View>
 
-        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '75%', width: '75%', paddingTop: '40%'}}>
+        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '85%'}}>
           <QRCode
             value={this.vCard}
             size={Dimensions.get('window').width * .75}
@@ -192,7 +154,7 @@ class Connec extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    paddingTop : Constants.statusBarHeight * 1.75,
+    paddingTop : Constants.statusBarHeight,
     backgroundColor : theme.colors.primary,
   },
   category: {

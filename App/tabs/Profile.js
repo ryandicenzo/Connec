@@ -33,17 +33,15 @@ class Profile extends React.Component {
       <View style = {styles.header}>
         <Header
         centerComponent={
-            <View>
               <Image
                 resizeMode="cover"
                 style={{
-                  width: 300,
-                  height: 64,
-                  resizeMode: 'contain',
-                  alignSelf: 'center'}}
+                    flex: 1,
+                    aspectRatio: 2,
+                    resizeMode: 'cover'
+                }}
                 source={require('./../assets/connec_logo_logo_white.png')}
             />
-          </View>
           }
         backgroundColor= 'theme.colors.primary'
         />
@@ -174,20 +172,23 @@ class Profile extends React.Component {
         </View>
 
         {/* Social Profiles */}
-        <FormLabel labelStyle={styles.label}>Social Profiles</FormLabel>
-
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          autoCapitalize='none'
-          placeholder="Facebook (full profile link)"
-          defaultValue= {this.props.profile.facebook}
-          onChangeText={(text) => {
-            this.setState({text});
-            this.props.dispatch(setProfile({
-              facebook: text,
-            }))
-          }}
-        />
+        <FormLabel labelStyle={styles.label}>Social Profiles</FormLabel>  
+        <View style={styles.inputRowSocial}>
+            <Icon name='facebook' type='material-community' color='#517fa4'/>
+            <View style={{ flex: 1 }}>
+              <FormInput containerStyle={styles.inputContainerIcon}
+                autoCapitalize='none'
+                placeholder="Facebook (full profile link)"
+                defaultValue={this.props.profile.facebook}
+                onChangeText={(text) => {
+                  this.setState({ text });
+                  this.props.dispatch(setProfile({
+                    facebook: text,
+                  }))
+                }}
+              />  
+            </View>
+            
         <Switch
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
@@ -197,8 +198,9 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
+          <View style={styles.inputRowSocial}>
+        <Icon name='instagram' type='material-community' color='#517fa4' />
+            <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Instagram (username)"
           defaultValue= {this.props.profile.instagram}
@@ -218,8 +220,9 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
+          <View style={styles.inputRowSocial}>
+            <Icon name='snapchat' type='material-community' color='#517fa4' />
+            <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Snapchat (username)"
           defaultValue= {this.props.profile.snapchat}
@@ -240,8 +243,9 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
+          <View style={styles.inputRowSocial}>
+            <Icon name='twitter' type='material-community' color='#517fa4' />
+            <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Twitter (username)"
           defaultValue= {this.props.profile.twitter}
@@ -267,8 +271,9 @@ class Profile extends React.Component {
         {/* Work Profiles */}
         <FormLabel labelStyle={styles.label}>Work Profiles</FormLabel>
 
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
+          <View style={styles.inputRowSocial}>
+            <Icon name='linkedin' type='material-community' color='#517fa4' />
+            <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="LinkedIn (username)"
           defaultValue= {this.props.profile.linkedin}
@@ -288,8 +293,9 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
+          <View style={styles.inputRowSocial}>
+        <Icon name='web' type='material-community' color='#517fa4' />
+            <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Personal Website"
           defaultValue= {this.props.profile.homepage}
@@ -309,8 +315,9 @@ class Profile extends React.Component {
         />
         </View>
 
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
+          <View style={styles.inputRowSocial}>
+        <Icon name='github-circle' type='material-community' color='#517fa4' />
+            <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Github (username)"
           defaultValue= {this.props.profile.github}
@@ -336,7 +343,7 @@ class Profile extends React.Component {
         <FormLabel labelStyle={styles.label}>Email</FormLabel>
 
         <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
+            <FormInput containerStyle={styles.inputContainer}
           placeholder="Personal Email"
           defaultValue= {this.props.profile.homeemail}
           onChangeText={(text) => {
@@ -378,7 +385,7 @@ class Profile extends React.Component {
 
         {/* Birthday */}
 
-        <View style={{ flex: 1, flexDirection: 'row',paddingTop: 5}}>
+        <View style={styles.inputRow}>
           <FormLabel containerStyle={{ width: '85%'}} labelStyle={styles.label}>Birthday (all fields required)</FormLabel>
             <Switch
             onValueChange={isSwitchOn => {
@@ -436,8 +443,9 @@ class Profile extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    paddingTop : Constants.statusBarHeight * 1.75,
-    backgroundColor : theme.colors.primary
+    paddingTop : Constants.statusBarHeight,
+    backgroundColor : theme.colors.primary,
+    flex: 2
   },
 
   label: {
@@ -446,14 +454,30 @@ const styles = StyleSheet.create({
   },
 
   inputContainer: {
-    width: '75%'
+    flex: 1
+    },
+  
+  inputContainerIcon: {
+    flex: 1,
+    paddingLeft: 3
   },
 
   inputRow: {
-    flex: 1,
+    flexBasis: 80,
     flexDirection: 'row',
-    paddingTop: 3
+    justifyContenty: 'space-evenly',
+    paddingTop: 3,
+    paddingLeft: 2
+  },
+  
+  inputRowSocial: {
+    flexBasis: 80,
+    flexDirection: 'row',
+    justifyContenty: 'space-evenly',
+    paddingTop: 3,
+    paddingLeft: 1
   }
+
 });
 
 // Connect component to Redux store

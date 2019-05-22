@@ -1,8 +1,16 @@
 # Connec
-Connec is a cross-platform mobile application powered by React Native that allows users to instantaneously share contact details and contextual information with one person or up to millions of people.
+Connec is a cross-platform mobile application powered by React Native and Expo. Connec lets people instantly share contact information and social media profiles with others via a scannable QR code that works with all iPhones and many Android devices.
 
 ![Home Page](/profile_page.png?raw=true "Home Page")
 
+## iOS Build Instructions
+0. Increment the application version number in `app.json`
+1. Open the 'App' directory in two Terminal windows
+2. In one Terminal window, `expo start` to run the app
+3. In the other Terminal window, `expo build:ios` to have Expo servers generate a .ipa iOS app file
+4. Download the .ipa file from the link provided by Expo in Terminal once the build completes
+5. Open Xcode and launch Xcode's Application Loader
+6. Use Application Loader to send the .ipa file to Apple
 
 ## User Stories
 1. A single user can immediately share their personal, professional, or event-dependent links
