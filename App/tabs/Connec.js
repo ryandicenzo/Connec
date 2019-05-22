@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert, Share, StyleSheet, Platform, Image } from 'react-native';
+import { View, Alert, Share, StyleSheet, Platform, Image, Dimensions } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
 import { Text, Header, Button, Icon } from 'react-native-elements';
 // Create QR code for a string
@@ -58,16 +58,17 @@ class Connec extends React.Component {
           organization: company,
         }],
         emails: [{
-          type: 'work',
+          type: 'WORK',
           text: ((info.wemail_sw) ? workemail : ''),
         }, {
-          type: 'home',
+          type: 'HOME',
           text: ((info.hemail_sw) ?  homeemail : ''),
         }],
         phones: [{
-          type: 'work',
+          type: 'WORK',          
           text: ((info.wphone_sw) ? wphone : ''),
         }, {
+          type: 'HOME',
           text: ((info.hphone_sw) ? hphone : ''),
         }],
         urls: [{
@@ -144,7 +145,8 @@ class Connec extends React.Component {
   render() {
 
     this.vCard = this.constructVCard()
-
+    console.log(this.vCard);
+    
     this.renderShare = (Platform.OS === 'ios')
 
 
@@ -170,10 +172,10 @@ class Connec extends React.Component {
         />
         </View>
 
-        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '85%'}}>
+        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '75%', width: '75%', paddingTop: '40%'}}>
           <QRCode
             value={this.vCard}
-            size={280}
+            size={Dimensions.get('window').width * .75}
             //bgColor='white'
             //fgColor='black'
           />
