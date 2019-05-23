@@ -465,7 +465,7 @@ const styles = StyleSheet.create({
   inputRow: {
     flexBasis: 80,
     flexDirection: 'row',
-    justifyContenty: 'space-evenly',
+    justifyContent: 'space-evenly',
     paddingTop: 3,
     paddingLeft: 2
   },
@@ -473,7 +473,7 @@ const styles = StyleSheet.create({
   inputRowSocial: {
     flexBasis: 80,
     flexDirection: 'row',
-    justifyContenty: 'space-evenly',
+    justifyContent: 'space-evenly',
     paddingTop: 3,
     paddingLeft: 1
   }
