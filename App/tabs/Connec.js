@@ -107,11 +107,14 @@ class Connec extends React.Component {
     // Android Sharing currently not functional */ }
   }
 
+
+  // TODO: Fix and add proper intro slide tutorial }
   LoadCardOrTutorial(vText) {
     if (vText.vText == 'Please input your information') {
       return <View style = {styles.tutorialContainer}>
         <Text style={styles.tutorialHeader}>Welcome to Connec!</Text>
-        <Text style={styles.body}>Click on Profile to start building your custom contact!</Text>
+        
+        <Text style={{fontSize: 20, fontWeight: 'bold', textAlign:'center', paddingBottom: 20}}>Click on Profile to start building your custom contact!</Text>
         
         <QRCode value={this.vCard} size={Dimensions.get('window').width * .5}/>
         </View>
