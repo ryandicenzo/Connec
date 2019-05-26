@@ -464,14 +464,14 @@ const styles = StyleSheet.create({
   inputRow: {
     flexBasis: 80,
     flexDirection: 'row',
-    justifyContenty: 'space-evenly',
+    justifyContent: 'space-evenly',
     paddingTop: 3
   },
   
   inputRowSocial: {
     flexBasis: 80,
     flexDirection: 'row',
-    justifyContenty: 'space-evenly',
+    justifyContent: 'space-evenly',
     paddingTop: 3,
     paddingLeft: 10
   }
