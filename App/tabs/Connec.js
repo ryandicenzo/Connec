@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Alert, Share, StyleSheet, Platform, Image, Dimensions } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Text, Header, Button, Icon } from 'react-native-elements';
+import { Text, Header, Button, Icon, Overlay } from 'react-native-elements';
 // Create QR code for a string
 import QRCode from 'react-native-qrcode';
 // Connect components to Redux
@@ -18,6 +18,8 @@ const theme = {
 // Connec Tab: QR code display
 class Connec extends React.Component {
 
+  emptyProfileMessage = 'Please input your information';
+
   switchHelper(switchVal, returnVal) {
     if (!switchVal) {
       return '';
@@ -29,9 +31,8 @@ class Connec extends React.Component {
     info = this.props.profile
 
     if (!info.fname && !info.lname){
-      return 'please input your information'
+      return this.emptyProfileMessage
     } else {
-
       var vCard = require('./vCardFormatter/index.js')
       var helper = this.switchHelper
       var contact = new vCard()
@@ -106,14 +107,25 @@ class Connec extends React.Component {
     // Android Sharing currently not functional */ }
   }
 
+  LoadCardOrTutorial(vText) {
+    if (vText.vText == 'Please input your information') {
+      return <View style = {styles.tutorialContainer}>
+        <Text style={styles.tutorialHeader}>Welcome to Connec!</Text>
+        <Text style={styles.body}>Click on Profile to start building your custom contact!</Text>
+        
+        <QRCode value={this.vCard} size={Dimensions.get('window').width * .5}/>
+        </View>
+    } else {
+      return <QRCode value={this.vCard} size={Dimensions.get('window').width * .75}/>
+    }
+  }
 
   render() {
 
     this.vCard = this.constructVCard()
-
+    console.log(this.vCard)
     this.renderShare = (Platform.OS === 'ios')
-
-
+    
     return (
       <View>
       <View style = {styles.header}>
@@ -135,17 +147,11 @@ class Connec extends React.Component {
         </View>
 
         <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '85%'}}>
-          <QRCode
-            value={this.vCard}
-            size={Dimensions.get('window').width * .75}
-            //bgColor='white'
-            //fgColor='black'
-          />
+          <this.LoadCardOrTutorial vText={this.vCard}/>
+
           <View style={{paddingBottom: '10%'}}/>
           <Text style={styles.category}>How to Share</Text>
-          <Text style={styles.body}>Open any QR-capable camera and scan!</Text>
-          <Text style={styles.body}>The QR code will load as a contact that is ready to add.</Text>
-          <Text style={styles.body}>Alternatively, click the send button on the upper right to share via text, email, messaging, and more.</Text>
+          <Text style={styles.body}>{'Open any QR-capable camera and scan!\nThe QR code will load as a contact that is ready to add.\nAlternatively, click the send button on the upper right to share via text, email, messaging, and more.'}        </Text>
         </View>
       </View>
     );
@@ -165,7 +171,21 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   body: {
+    fontSize: 14,
     margin: 1,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingBottom: 20
+  },
+  tutorialContainer: {
+    alignItems: 'center'
+  },
+  tutorialHeader: {
+    fontSize: 36,
+    padding: 10,
+    backgroundColor : '#d0d9db',
+    fontWeight: 'bold',
+    color: theme.colors.primary,
     textAlign: 'center'
   }
 
