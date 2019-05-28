@@ -8,12 +8,15 @@ import { connect } from 'react-redux';
 
 import { set as setProfile } from '../redux/profile/actions';
 import { Constants } from 'expo';
+import ConnecHeader from '../components/ConnecHeader.js'
 import ProfileInput from '../components/profileinput.js'
 
 
 const theme = {
   colors: {
-    primary: '#6CB4D2'
+    primary: '#6CB4D2',
+    switchOn: '#6CB4D2',
+    switchOff: '#ffe8d3'
   }
 }
 
@@ -30,35 +33,7 @@ class Profile extends React.Component {
       <KeyboardAvoidingView behavior="padding">
       <ScrollView bounces="False">
 
-      <View style = {styles.header}>
-        <Header
-        centerComponent={
-              <Image
-                resizeMode="cover"
-                style={{
-                    flex: 1,
-                    aspectRatio: 2,
-                    resizeMode: 'cover'
-                }}
-                source={require('./../assets/connec_logo_logo_white.png')}
-            />
-          }
-        backgroundColor= 'theme.colors.primary'
-        />
-        </View>
-
-{/*
-        <View style={{alignItems: 'center', marginTop: 20, marginBottom: 10}}>
-        <Avatar
-        xlarge
-        rounded
-        source={{uri: this.props.profile.avatar}}
-        onPress={() => console.log("Add Upload Photo!")}
-        activeOpacity={0.7}
-        />
-      </View>
-*/}
-
+        <ConnecHeader></ConnecHeader>
         <FormLabel labelStyle={styles.label}>Contact</FormLabel>
 
         <FormInput containerStyle={styles.inputContainer}
@@ -128,10 +103,12 @@ class Profile extends React.Component {
         />
 
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({hphone_sw: isSwitchOn}))
           }}
+          
           value={this.props.profile.hphone_sw}
         />
 
@@ -163,6 +140,7 @@ class Profile extends React.Component {
           }}
         />
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({wphone_sw: isSwitchOn}))
@@ -174,7 +152,7 @@ class Profile extends React.Component {
         {/* Social Profiles */}
         <FormLabel labelStyle={styles.label}>Social Profiles</FormLabel>  
         <View style={styles.inputRowSocial}>
-            <Icon name='facebook' type='material-community' color='#517fa4'/>
+            <Icon name='facebook' type='material-community' iconStyle={styles.icon}/>
             <View style={{ flex: 1 }}>
               <FormInput containerStyle={styles.inputContainerIcon}
                 autoCapitalize='none'
@@ -190,6 +168,7 @@ class Profile extends React.Component {
             </View>
             
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({fb_sw: isSwitchOn}))
@@ -199,7 +178,7 @@ class Profile extends React.Component {
         </View>
 
           <View style={styles.inputRowSocial}>
-        <Icon name='instagram' type='material-community' color='#517fa4' />
+        <Icon name='instagram' type='material-community' iconStyle={styles.icon} />
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Instagram (username)"
@@ -212,6 +191,7 @@ class Profile extends React.Component {
           }}
         />
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({ig_sw: isSwitchOn}))
@@ -221,7 +201,7 @@ class Profile extends React.Component {
         </View>
 
           <View style={styles.inputRowSocial}>
-            <Icon name='snapchat' type='material-community' color='#517fa4' />
+            <Icon name='snapchat' type='material-community' iconStyle={styles.icon} />
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Snapchat (username)"
@@ -235,16 +215,16 @@ class Profile extends React.Component {
         />
 
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({sc_sw: isSwitchOn}))
           }}
           value={this.props.profile.sc_sw}
         />
-        </View>
-
+        </View>  
           <View style={styles.inputRowSocial}>
-            <Icon name='twitter' type='material-community' color='#517fa4' />
+            <Icon name='twitter' type='material-community' iconStyle={styles.icon} />
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Twitter (username)"
@@ -258,6 +238,7 @@ class Profile extends React.Component {
         />
 
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({tw_sw: isSwitchOn}))
@@ -272,7 +253,7 @@ class Profile extends React.Component {
         <FormLabel labelStyle={styles.label}>Work Profiles</FormLabel>
 
           <View style={styles.inputRowSocial}>
-            <Icon name='linkedin' type='material-community' color='#517fa4' />
+            <Icon name='linkedin' type='material-community' iconStyle={styles.icon} />
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="LinkedIn (username)"
@@ -285,6 +266,7 @@ class Profile extends React.Component {
           }}
         />
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({li_sw: isSwitchOn}))
@@ -294,7 +276,7 @@ class Profile extends React.Component {
         </View>
 
           <View style={styles.inputRowSocial}>
-        <Icon name='web' type='material-community' color='#517fa4' />
+        <Icon name='web' type='material-community' iconStyle={styles.icon} />
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Personal Website"
@@ -307,6 +289,7 @@ class Profile extends React.Component {
           }}
         />
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({hp_sw: isSwitchOn}))
@@ -316,7 +299,7 @@ class Profile extends React.Component {
         </View>
 
           <View style={styles.inputRowSocial}>
-        <Icon name='github-circle' type='material-community' color='#517fa4' />
+        <Icon name='github-circle' type='material-community' iconStyle={styles.icon} />
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Github (username)"
@@ -329,6 +312,7 @@ class Profile extends React.Component {
           }}
         />
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({gh_sw: isSwitchOn}))
@@ -355,6 +339,7 @@ class Profile extends React.Component {
         />
 
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({hemail_sw: isSwitchOn}))
@@ -375,6 +360,7 @@ class Profile extends React.Component {
           }}
         />
         <Switch
+          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({wemail_sw: isSwitchOn}))
@@ -388,6 +374,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
           <FormLabel containerStyle={{ width: '85%'}} labelStyle={styles.label}>Birthday (all fields required)</FormLabel>
             <Switch
+            trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
             onValueChange={isSwitchOn => {
               this.setState({isSwitchOn});
               this.props.dispatch(setProfile({bday_sw: isSwitchOn}))
@@ -442,15 +429,10 @@ class Profile extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    paddingTop : Constants.statusBarHeight,
-    backgroundColor : theme.colors.primary,
-    flex: 2
-  },
 
   label: {
     fontSize: 16,
-    color: theme.colors.primary
+    color: '#2B95A3'
   },
 
   inputContainer: {
@@ -458,7 +440,7 @@ const styles = StyleSheet.create({
     },
   
   inputContainerIcon: {
-    flex: 1
+    flex: 1,
     },
 
   inputRow: {
@@ -474,6 +456,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     paddingTop: 3,
     paddingLeft: 10
+  },
+
+  icon: {
+    color: '#FF9406'
   }
 
 });

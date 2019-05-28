@@ -8,11 +8,13 @@ import QRCode from 'react-native-qrcode';
 import { connect } from 'react-redux';
 // import vcard from 'vcard-generator'
 import { FileSystem, Constants, IntentLauncherAndroid } from 'expo';
+import ConnecHeader from '../components/ConnecHeader.js';
 
 const theme = {
   colors: {
     primary: '#6CB4D2',
-    secondary: '#2E728F'
+    secondary: '#2E728F',
+    button: '#2E728F',
   }
 }
 // Connec Tab: QR code display
@@ -131,30 +133,12 @@ class Connec extends React.Component {
     
     return (
       <View>
-      <View style = {styles.header}>
-        <Header
-        centerComponent={
-          <Image
-            resizeMode="cover"
-            style={{
-              flex: 1,
-              resizeMode: 'cover',
-
-              aspectRatio: 2}}
-            source={require('./../assets/connec_logo_logo_white.png')}
-        />
-      }
-        rightComponent= { this.renderShare ? <Icon name='send' color='white' onPress={() => this.shareVCard()} /> : null }
-        backgroundColor= 'theme.colors.primary'
-        />
-        </View>
-
-        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '85%'}}>
+        <ConnecHeader></ConnecHeader>
+        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '75%'}}>
           <this.LoadCardOrTutorial vText={this.vCard}/>
-
-          <View style={{paddingBottom: '10%'}}/>
-          <Text style={styles.category}>How to Share</Text>
-          <Text style={styles.body}>{'Open any QR-capable camera and scan!\nThe QR code will load as a contact that is ready to add.\nAlternatively, click the send button on the upper right to share via text, email, messaging, and more.'}        </Text>
+        </View>
+        <View>
+            {this.renderShare ? <Icon name='send' style={styles.share} color={theme.colors.button} onPress={() => this.shareVCard()} /> : null}
         </View>
       </View>
     );
@@ -164,7 +148,7 @@ class Connec extends React.Component {
 const styles = StyleSheet.create({
   header: {
     paddingTop : Constants.statusBarHeight,
-    backgroundColor : theme.colors.primary,
+    backgroundColor : "#fff",
   },
   category: {
     fontSize: 16,
@@ -190,6 +174,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: theme.colors.primary,
     textAlign: 'center'
+  },
+  share: {
+    paddingTop: '10%'
   }
 
 });
