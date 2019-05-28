@@ -15,6 +15,7 @@ const theme = {
     primary: '#6CB4D2',
     secondary: '#2E728F',
     button: '#2E728F',
+    orange: '#FF9406'
   }
 }
 // Connec Tab: QR code display
@@ -132,13 +133,13 @@ class Connec extends React.Component {
     this.renderShare = (Platform.OS === 'ios')
     
     return (
-      <View>
+      <View style={styles.container}>
         <ConnecHeader></ConnecHeader>
         <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '75%'}}>
           <this.LoadCardOrTutorial vText={this.vCard}/>
         </View>
-        <View>
-            {this.renderShare ? <Icon name='send' style={styles.share} color={theme.colors.button} onPress={() => this.shareVCard()} /> : null}
+        <View style={{flex: 1}}>
+            {this.renderShare ? <Icon reverse raised  name='send' style={styles.share} color={theme.colors.orange} onPress={() => this.shareVCard()} /> : null}
         </View>
       </View>
     );
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: 20
   },
-  tutorialContainer: {
+  container: {
     alignItems: 'center'
   },
   tutorialHeader: {
@@ -176,7 +177,8 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   share: {
-    paddingTop: '10%'
+    paddingTop: '10%',
+    paddingBottom: '10%'
   }
 
 });

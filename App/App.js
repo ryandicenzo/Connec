@@ -49,8 +49,8 @@ const Navigator = createBottomTabNavigator(
     // Set menu colors
      tabBarOptions: {
     //   // Color of icon tints, defaults to native OS color defaults
-       activeTintColor: '#6CB4D2', // #007AFF is iOS active color
-       inactiveTintColor: 'gray',
+       activeTintColor: '#2E728F', // #007AFF is iOS active color
+       inactiveTintColor: '#b7a99c', // grey is standard
      },
   }
 );
