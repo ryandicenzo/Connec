@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert, Share, StyleSheet, Platform, Image, Dimensions } from 'react-native';
+import { View, Alert, Share, StyleSheet, Platform, Image, Dimensions, Modal } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
 import { Text, Header, Button, Icon, Overlay } from 'react-native-elements';
 // Create QR code for a string
@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 // import vcard from 'vcard-generator'
 import { FileSystem, Constants, IntentLauncherAndroid } from 'expo';
 import ConnecHeader from '../components/ConnecHeader.js';
+import Main from './../tabs/Main.js'
 
 const theme = {
   colors: {
@@ -89,6 +90,7 @@ class Connec extends React.Component {
       // Save .vcf file to be shared
 
       Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', contact.getFormattedString())
+      Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + "_initial.vcf", "")
 
       return contact.getFormattedString()
     }
@@ -112,19 +114,25 @@ class Connec extends React.Component {
 
 
   // TODO: Fix and add proper intro slide tutorial }
-  LoadCardOrTutorial(vText) {
-    if (vText.vText == 'Please input your information') {
-      return <View style = {styles.tutorialContainer}>
-        <Text style={styles.tutorialHeader}>Welcome to Connec!</Text>
-        
-        <Text style={{fontSize: 20, fontWeight: 'bold', textAlign:'center', paddingBottom: 20}}>Click on Profile to start building your custom contact!</Text>
-        
-        <QRCode value={this.vCard} size={Dimensions.get('window').width * .5}/>
-        </View>
-    } else {
-      return <QRCode value={this.vCard} size={Dimensions.get('window').width * .75}/>
-    }
-  }
+  // LoadCardOrTutorial(vText) {
+  //   if (vText.vText == 'Please input your information') {
+  //     return <View style={{marginTop: 22}}>
+  //     <Modal
+  //       animationType="fade"
+  //       transparent={false}
+  //       visible={true}
+  //       >
+  //       <View>
+  //         <View>
+  //           <Tutorial></Tutorial>
+  //         </View>
+  //       </View>
+  //     </Modal>
+  //   </View>
+  //   } else {
+  //     return null
+  //   }
+  // }
 
   render() {
 
@@ -132,13 +140,15 @@ class Connec extends React.Component {
     this.renderShare = (Platform.OS === 'ios')
     
     return (
-      <View style={styles.container}>
-        <ConnecHeader></ConnecHeader>
-        <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '75%'}}>
-          <this.LoadCardOrTutorial vText={this.vCard}/>
-        </View>
-        <View style={{flex: 1}}>
-            {this.renderShare ? <Icon reverse raised  name='send' style={styles.share} color={theme.colors.orange} onPress={() => this.shareVCard()} /> : null}
+      <View>
+        <View style={styles.container}>
+          <ConnecHeader></ConnecHeader>
+          <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '75%'}}>
+          <QRCode value={this.vCard} size={Dimensions.get('window').width * .75}/>
+          </View>
+          <View style={{flex: 1}}>
+              {this.renderShare ? <Icon reverse raised  name='send' style={styles.share} color={theme.colors.orange} onPress={() => this.shareVCard()} /> : null}
+          </View>
         </View>
       </View>
     );

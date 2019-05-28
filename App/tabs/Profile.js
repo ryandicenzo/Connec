@@ -459,7 +459,7 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    color: '#2E728F'
+    color: '#FF9406'
   }
 
 });

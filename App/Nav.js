@@ -13,7 +13,7 @@ import {store, persistor } from './redux/store';
 // Wrap root component with PersistGate
 import { PersistGate } from 'redux-persist/lib/integration/react';
 
-import { Main } from './tabs/Main.js'
+import Main from './tabs/Main.js'
 
 // Import app tab components
 import Profile from './tabs/Profile';
@@ -23,6 +23,7 @@ import Camera from './tabs/Camera';
 
 // Tab Navigation: https://reactnavigation.org/docs/en/tab-based-navigation.html
 import { createBottomTabNavigator } from 'react-navigation';
+
 // Bottom Tab Menu
 const Navigator = createBottomTabNavigator(
   // Set menu names and order (menuTitle, importedComponentName)
@@ -49,7 +50,7 @@ const Navigator = createBottomTabNavigator(
         return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
       },
     }),
-    initialRouteName: 'Connec',
+    initialRouteName: 'Profile',
     // Set menu colors
      tabBarOptions: {
     //   // Color of icon tints, defaults to native OS color defaults
@@ -59,15 +60,10 @@ const Navigator = createBottomTabNavigator(
 );
 
 
-// Provider: Boilerplate to make the Redux store available to all components by wrapping the top level component, Navigator
-export default class Root extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Main></Main>
-      </PersistGate>
-      </Provider>
-    );
-  }
+export class Nav extends React.Component {
+    render() {
+        return (
+            <Navigator />          
+        );
+      }
 }

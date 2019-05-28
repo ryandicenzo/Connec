@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 16,
-    color: '#6CB4D2',
+    color: '#2E728F',
     fontWeight: 'bold'
   },
 });
