@@ -129,7 +129,6 @@ class Connec extends React.Component {
   render() {
 
     this.vCard = this.constructVCard()
-    console.log(this.vCard)
     this.renderShare = (Platform.OS === 'ios')
     
     return (

@@ -12,7 +12,7 @@ export default class ConnecHeader extends Component {
 
     async componentDidMount() {
         await Font.loadAsync({
-            'comfortaa': require('.././assets/fonts/comfortaa.ttf'),
+            'comfortaa': require('.././assets/fonts/Comfortaa-Bold.ttf'),
         });
 
         this.setState({ fontLoaded: true });
