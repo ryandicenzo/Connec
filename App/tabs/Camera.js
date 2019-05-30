@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Linking, Dimensions, LayoutAnimation, Text, View, StatusBar, StyleSheet, TouchableOpacity, Share } from 'react-native';
-import { BarCodeScanner, Permissions, FileSystem, Contacts } from 'expo';
+import { Dimensions, Text, View, StatusBar, StyleSheet, Share } from 'react-native';
+import { BarCodeScanner, Permissions, FileSystem } from 'expo';
 
 export default class App extends Component {
   state = {
@@ -8,7 +8,7 @@ export default class App extends Component {
     lastScannedUrl: null,
   };
 
-  // On mouting, request for camera permission.
+  // On mounting, request for camera permission.
   componentDidMount() {
     this._requestCameraPermission();
   }
@@ -133,15 +133,6 @@ const styles = StyleSheet.create({
   urlText: {
     color: '#fff',
     fontSize: 20,
-  },
-  cancelButton: {
-    marginLeft: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  cancelButtonText: {
-    color: 'rgba(255,255,255,0.8)',
-    fontSize: 18,
   },
   label: {
     fontSize: 16,

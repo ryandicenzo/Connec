@@ -1,16 +1,14 @@
 import React from 'react';
-import { TextInput, View, ScrollView, KeyboardAvoidingView, StyleSheet, Switch, Image } from 'react-native';
+import { View, ScrollView, KeyboardAvoidingView, StyleSheet, Switch, } from 'react-native';
 // Components: https://react-native-training.github.io/react-native-elements/
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Text, Icon, Header, List, ListItem, FormLabel, FormInput, FormValidationMessage, Avatar, CheckBox } from 'react-native-elements';
+import { Text, Icon, FormLabel, FormInput } from 'react-native-elements';
 // Connect components to Redux
 import { connect } from 'react-redux';
 
 import { set as setProfile } from '../redux/profile/actions';
 import { Constants } from 'expo';
 import ConnecHeader from '../components/ConnecHeader.js'
-import ProfileInput from '../components/profileinput.js'
-
 
 const theme = {
   colors: {
@@ -437,11 +435,11 @@ const styles = StyleSheet.create({
 
   inputContainer: {
     flex: 1
-    },
-  
+  },
+
   inputContainerIcon: {
     flex: 1,
-    },
+  },
 
   inputRow: {
     flexBasis: 80,
@@ -449,7 +447,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     paddingTop: 3
   },
-  
+
   inputRowSocial: {
     flexBasis: 80,
     flexDirection: 'row',
