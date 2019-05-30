@@ -42,14 +42,14 @@ const slides = [
   {
     key: '1',
     title: 'Let’s get you\nstarted!',
-    text: 'First enter the account names \nthat you wish to share\non the profile tab!',
+    text: 'First enter the contact info that you\n wish to share on the profile tab.\n Tap the sliders to enable or disable\na specific field.',
     image: require('.././assets/tutorial/1.png'),
     colors: ['#6CB4D2', '#6CB4D2'],
   },
   {
     key: '2',
     title: 'Are you ready to Connec?',
-    text: 'Tap the Connec\nicon to generate your\nown personal QR Code!',
+    text: 'Tap the Connec\nicon to generate your\nown personal QR Code. ',
     image: require('.././assets/tutorial/2.png'),
     colors: ['#FF9406', '#FF9406'],
   },
@@ -64,20 +64,16 @@ const slides = [
 
 
 export class Main extends React.Component {
-
-
+  
   constructor(props) {
     super(props);
     this.state = { loaded: false, showRealApp: false };
 
     var oops = FileSystem.readAsStringAsync(FileSystem.documentDirectory + "_initial.vcf").then(({ uri }) => {
-      console.log("found");
       this.setState({loaded : 'true'})
       this.setState({showRealApp : 'true'})
         })
-    .catch(error => {
-      console.log("not found");
-      
+    .catch(error => {      
       this.setState({loaded : 'true'})
       this.setState({showRealApp : 'false'})
     });
