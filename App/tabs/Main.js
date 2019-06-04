@@ -41,22 +41,22 @@ const styles = StyleSheet.create({
 const slides = [
   {
     key: '1',
-    title: 'Let’s get you\nstarted!',
-    text: 'First enter the contact info that you\n wish to share on the profile tab.\n Tap the sliders to enable or disable\na specific field.',
+    title: 'Let’s get you started!',
+    text: 'Enter the contact info you wish to share on the profile tab. Tap the sliders to enable or disable a specific field.',
     image: require('.././assets/tutorial/1.png'),
     colors: ['#6CB4D2', '#6CB4D2'],
   },
   {
     key: '2',
     title: 'Are you ready to Connec?',
-    text: 'Tap the Connec\nicon to generate your\nown personal QR Code. ',
+    text: 'Tap the Connec icon to generate your own personal QR Code.',
     image: require('.././assets/tutorial/2.png'),
     colors: ['#FF9406', '#FF9406'],
   },
   {
     key: '3',
     title: 'Scan away!',
-    text: 'Have a friend or colleague\nscan your QR code with\nthe camera app or a QR scanner\nand start to Connec!',
+    text: 'Have a friend or colleague scan your QR Code with the iPhone camera app. Certain non-Apple devices may require a QR scanner to work with Connec.',
     image: require('.././assets/tutorial/3.png'),
     colors: ['#2E728F', '#2E728F'],
   }
