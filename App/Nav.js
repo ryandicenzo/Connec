@@ -50,7 +50,7 @@ const Navigator = createBottomTabNavigator(
         return <Icon name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
       },
     }),
-    initialRouteName: 'Profile',
+    initialRouteName: 'Connec',
     // Set menu colors
      tabBarOptions: {
     //   // Color of icon tints, defaults to native OS color defaults

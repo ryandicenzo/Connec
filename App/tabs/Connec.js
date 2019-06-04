@@ -143,7 +143,7 @@ class Connec extends React.Component {
       <View>
         <View style={styles.container}>
           <ConnecHeader></ConnecHeader>
-          <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '75%'}}>
+          <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '75%', paddingBottom: '10%'}}>
           <QRCode value={this.vCard} size={Dimensions.get('window').width * .75}/>
           </View>
           <View style={{flex: 1}}>
@@ -167,23 +167,8 @@ const styles = StyleSheet.create({
     color: theme.colors.primary,
     textAlign: 'center'
   },
-  body: {
-    fontSize: 14,
-    margin: 1,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    paddingBottom: 20
-  },
   container: {
     alignItems: 'center'
-  },
-  tutorialHeader: {
-    fontSize: 36,
-    padding: 10,
-    backgroundColor : '#d0d9db',
-    fontWeight: 'bold',
-    color: theme.colors.primary,
-    textAlign: 'center'
   },
   share: {
     paddingTop: '10%',
