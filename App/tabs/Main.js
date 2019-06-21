@@ -7,6 +7,7 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import { connect } from 'react-redux';
 
 import { Nav } from '../Nav.js'
+import Splash from '../components/Splash.js'
 
 const winWidth = Dimensions.get('window').width
 const winHeight = Dimensions.get('window').height
@@ -122,7 +123,7 @@ export class Main extends React.Component {
           );
       }
     } else {
-      return <View></View>;
+      return <Splash></Splash> ;
     }
   }
 }
