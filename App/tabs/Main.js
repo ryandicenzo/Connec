@@ -67,11 +67,12 @@ export class Main extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = { loaded: false, showRealApp: false };
+    this.state = { loaded: false, showRealApp: false, savedContact: false };
 
-    var oops = FileSystem.readAsStringAsync(FileSystem.documentDirectory + "_initial.vcf").then(({ uri }) => {
+    var savedContact = FileSystem.readAsStringAsync(FileSystem.documentDirectory + "_initial.vcf").then(({ uri }) => {
       this.setState({loaded : 'true'})
       this.setState({showRealApp : 'true'})
+      this.setState({savedContact : 'true'})
         })
     .catch(error => {      
       this.setState({loaded : 'true'})
@@ -107,7 +108,7 @@ export class Main extends React.Component {
 
     if (this.state.loaded == 'true') {
         if (this.state.showRealApp == 'true') {
-          return <Nav />
+          return <Nav contact={this.state.savedContact}/>
       } else {
           return (
               <View style={{position: 'absolute'}}>

@@ -14,7 +14,8 @@ const theme = {
   colors: {
     primary: '#6CB4D2',
     switchOn: '#6CB4D2',
-    switchOff: '#ffe8d3'
+    switchOff: '#ffe8d3',
+    placeholderTextColor: '#b7b7b7'
   }
 }
 
@@ -36,6 +37,7 @@ class Profile extends React.Component {
 
         <FormInput containerStyle={styles.inputContainer}
           placeholder="First Name"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.fname}
           onChangeText={(text) => {
             this.setState({text});
@@ -47,6 +49,7 @@ class Profile extends React.Component {
 
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Last Name"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.lname}
           onChangeText={(text) => {
             this.setState({text});
@@ -58,6 +61,7 @@ class Profile extends React.Component {
 
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Company / Organization"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.company}
           onChangeText={(text) => {
             this.setState({text});
@@ -91,6 +95,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Personal Phone"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.hphone}
           onChangeText={(text) => {
             this.setState({text});
@@ -129,6 +134,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Work Phone"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.wphone}
           onChangeText={(text) => {
             this.setState({text});
@@ -154,7 +160,8 @@ class Profile extends React.Component {
             <View style={{ flex: 1 }}>
               <FormInput containerStyle={styles.inputContainerIcon}
                 autoCapitalize='none'
-                placeholder="Facebook (full profile link)"
+                placeholderTextColor={theme.colors.placeholderTextColor}
+                placeholder="Facebook (link:facebook.com/first.last.#)"
                 defaultValue={this.props.profile.facebook}
                 onChangeText={(text) => {
                   this.setState({ text });
@@ -180,6 +187,7 @@ class Profile extends React.Component {
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Instagram (username)"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.instagram}
           onChangeText={(text) => {
             this.setState({text});
@@ -203,6 +211,7 @@ class Profile extends React.Component {
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Snapchat (username)"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.snapchat}
           onChangeText={(text) => {
             this.setState({text});
@@ -226,6 +235,7 @@ class Profile extends React.Component {
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Twitter (username)"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.twitter}
           onChangeText={(text) => {
             this.setState({text});
@@ -255,6 +265,7 @@ class Profile extends React.Component {
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="LinkedIn (username)"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.linkedin}
           onChangeText={(text) => {
             this.setState({text});
@@ -278,6 +289,7 @@ class Profile extends React.Component {
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Personal Website"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.homepage}
           onChangeText={(text) => {
             this.setState({text});
@@ -301,6 +313,7 @@ class Profile extends React.Component {
             <FormInput containerStyle={styles.inputContainerIcon}
           autoCapitalize='none'
           placeholder="Github (username)"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.github}
           onChangeText={(text) => {
             this.setState({text});
@@ -327,6 +340,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
             <FormInput containerStyle={styles.inputContainer}
           placeholder="Personal Email"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.homeemail}
           onChangeText={(text) => {
             this.setState({text});
@@ -349,6 +363,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Work / School Email"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.workemail}
           onChangeText={(text) => {
             this.setState({text});
@@ -384,6 +399,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Month (MM)"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.bmonth}
           onChangeText={(text) => {
             this.setState({text});
@@ -397,6 +413,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Day (DD)"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.bday}
           onChangeText={(text) => {
             this.setState({text});
@@ -410,6 +427,7 @@ class Profile extends React.Component {
         <View style={styles.inputRow}>
         <FormInput containerStyle={styles.inputContainer}
           placeholder="Year (YYYY)"
+          placeholderTextColor={theme.colors.placeholderTextColor}
           defaultValue= {this.props.profile.byear}
           onChangeText={(text) => {
             this.setState({text});
@@ -445,7 +463,8 @@ const styles = StyleSheet.create({
     flexBasis: 80,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    paddingTop: 3
+    paddingTop: 3,
+    color: 'red'  
   },
 
   inputRowSocial: {

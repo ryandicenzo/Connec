@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Alert, Share, StyleSheet, Platform, Image, Dimensions, Modal } from 'react-native';
+import { View, Share, StyleSheet, Platform, Dimensions } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Text, Header, Button, Icon, Overlay } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 // Create QR code for a string
 import QRCode from 'react-native-qrcode';
 // Connect components to Redux
@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 // import vcard from 'vcard-generator'
 import { FileSystem, Constants, IntentLauncherAndroid } from 'expo';
 import ConnecHeader from '../components/ConnecHeader.js';
-import Main from './../tabs/Main.js'
 
 const theme = {
   colors: {
@@ -112,28 +111,6 @@ class Connec extends React.Component {
     // Android Sharing currently not functional */ }
   }
 
-
-  // TODO: Fix and add proper intro slide tutorial }
-  // LoadCardOrTutorial(vText) {
-  //   if (vText.vText == 'Please input your information') {
-  //     return <View style={{marginTop: 22}}>
-  //     <Modal
-  //       animationType="fade"
-  //       transparent={false}
-  //       visible={true}
-  //       >
-  //       <View>
-  //         <View>
-  //           <Tutorial></Tutorial>
-  //         </View>
-  //       </View>
-  //     </Modal>
-  //   </View>
-  //   } else {
-  //     return null
-  //   }
-  // }
-
   render() {
 
     this.vCard = this.constructVCard()
@@ -174,9 +151,7 @@ const styles = StyleSheet.create({
     paddingTop: '10%',
     paddingBottom: '10%'
   }
-
 });
-
 
 // Connect component to Redux store
 export default connect(state => state)(Connec);
