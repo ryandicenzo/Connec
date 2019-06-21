@@ -21,7 +21,7 @@ const theme = {
 // Connec Tab: QR code display
 class Connec extends React.Component {
 
-  emptyProfileMessage = 'Please input your information';
+  emptyProfileMessage = 'Contact information must be added in the Connec profile tab';
 
   switchHelper(switchVal, returnVal) {
     if (!switchVal) {
@@ -120,7 +120,7 @@ class Connec extends React.Component {
       <View>
         <View style={styles.container}>
           <ConnecHeader></ConnecHeader>
-          <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', height: '75%', paddingBottom: '10%'}}>
+          <View style={{alignItems: 'center', justifyContent: 'center', alignSelf: 'center', paddingTop: '15%', paddingBottom: '10%'}}>
           <QRCode value={this.vCard} size={Dimensions.get('window').width * .75}/>
           </View>
           <View style={{flex: 1}}>
