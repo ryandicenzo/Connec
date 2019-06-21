@@ -35,10 +35,7 @@ class Profile extends React.Component {
         <ConnecHeader></ConnecHeader>
         <FormLabel labelStyle={styles.label}>Contact</FormLabel>
 
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="First Name"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.fname}
+        <FormInput containerStyle={styles.inputContainer} placeholder="First Name" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.fname}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -47,11 +44,8 @@ class Profile extends React.Component {
           }}
         />
 
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="Last Name"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.lname}
-          onChangeText={(text) => {
+        <FormInput containerStyle={styles.inputContainer} placeholder="Last Name"placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.lname}
+        onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
               lname: text,
@@ -59,10 +53,7 @@ class Profile extends React.Component {
           }}
         />
 
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="Company / Organization"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.company}
+        <FormInput containerStyle={styles.inputContainer} placeholder="Company / Organization" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.company}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -71,32 +62,10 @@ class Profile extends React.Component {
           }}
         />
 
-        {/* Profile Photo
-
-        <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="Profile image link"
-          defaultValue= {this.props.profile.avatar}
-          onChangeText={(text) => {
-            this.setState({text});
-            this.props.dispatch(setProfile({
-              avatar: text,
-            }))
-          }}
-        />
-        <Switch></Switch>
-        </View>
-        */}
-
-
         {/* Phone */}
         <FormLabel labelStyle={styles.label}>Phone</FormLabel>
-
         <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="Personal Phone"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.hphone}
+        <FormInput containerStyle={styles.inputContainer} placeholder="Personal Phone" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.hphone}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -105,37 +74,17 @@ class Profile extends React.Component {
           }}
         />
 
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({hphone_sw: isSwitchOn}))
           }}
-          
           value={this.props.profile.hphone_sw}
         />
-
-{/*
-
-        <Switch
-         onValueChange= {
-           switch => {
-           this.setState({switch});
-           this.props.dispatch(setProfile({
-             hphone_sw: switch,
-           }))
-         }}
-        />
-
-        */ }
-
         </View>
 
         <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="Work Phone"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.wphone}
+        <FormInput containerStyle={styles.inputContainer} placeholder="Work Phone" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.wphone}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -143,8 +92,7 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({wphone_sw: isSwitchOn}))
@@ -158,11 +106,7 @@ class Profile extends React.Component {
         <View style={styles.inputRowSocial}>
             <Icon name='facebook' type='material-community' iconStyle={styles.icon}/>
             <View style={{ flex: 1 }}>
-              <FormInput containerStyle={styles.inputContainerIcon}
-                autoCapitalize='none'
-                placeholderTextColor={theme.colors.placeholderTextColor}
-                placeholder="Facebook (link:facebook.com/first.last.#)"
-                defaultValue={this.props.profile.facebook}
+              <FormInput containerStyle={styles.inputContainerIcon} autoCapitalize='none' placeholderTextColor={theme.colors.placeholderTextColor} placeholder="Facebook (link:facebook.com/first.last.#)" defaultValue={this.props.profile.facebook}
                 onChangeText={(text) => {
                   this.setState({ text });
                   this.props.dispatch(setProfile({
@@ -172,8 +116,7 @@ class Profile extends React.Component {
               />  
             </View>
             
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({fb_sw: isSwitchOn}))
@@ -184,11 +127,7 @@ class Profile extends React.Component {
 
           <View style={styles.inputRowSocial}>
         <Icon name='instagram' type='material-community' iconStyle={styles.icon} />
-            <FormInput containerStyle={styles.inputContainerIcon}
-          autoCapitalize='none'
-          placeholder="Instagram (username)"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.instagram}
+            <FormInput containerStyle={styles.inputContainerIcon} autoCapitalize='none' placeholder="Instagram (username)" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.instagram}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -196,8 +135,7 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({ig_sw: isSwitchOn}))
@@ -206,13 +144,9 @@ class Profile extends React.Component {
         />
         </View>
 
-          <View style={styles.inputRowSocial}>
+        <View style={styles.inputRowSocial}>
             <Icon name='snapchat' type='material-community' iconStyle={styles.icon} />
-            <FormInput containerStyle={styles.inputContainerIcon}
-          autoCapitalize='none'
-          placeholder="Snapchat (username)"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.snapchat}
+            <FormInput containerStyle={styles.inputContainerIcon} autoCapitalize='none' placeholder="Snapchat (username)" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.snapchat}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -221,8 +155,7 @@ class Profile extends React.Component {
           }}
         />
 
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({sc_sw: isSwitchOn}))
@@ -232,11 +165,7 @@ class Profile extends React.Component {
         </View>  
           <View style={styles.inputRowSocial}>
             <Icon name='twitter' type='material-community' iconStyle={styles.icon} />
-            <FormInput containerStyle={styles.inputContainerIcon}
-          autoCapitalize='none'
-          placeholder="Twitter (username)"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.twitter}
+            <FormInput containerStyle={styles.inputContainerIcon} autoCapitalize='none' placeholder="Twitter (username)" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.twitter}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -245,8 +174,7 @@ class Profile extends React.Component {
           }}
         />
 
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }} 
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({tw_sw: isSwitchOn}))
@@ -255,18 +183,11 @@ class Profile extends React.Component {
         />
         </View>
 
-
-
         {/* Work Profiles */}
         <FormLabel labelStyle={styles.label}>Work Profiles</FormLabel>
-
           <View style={styles.inputRowSocial}>
             <Icon name='linkedin' type='material-community' iconStyle={styles.icon} />
-            <FormInput containerStyle={styles.inputContainerIcon}
-          autoCapitalize='none'
-          placeholder="LinkedIn (username)"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.linkedin}
+            <FormInput containerStyle={styles.inputContainerIcon} autoCapitalize='none' placeholder="LinkedIn (username)" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.linkedin}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -274,9 +195,8 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
-          onValueChange={isSwitchOn => {
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }} 
+        onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({li_sw: isSwitchOn}))
           }}
@@ -284,13 +204,9 @@ class Profile extends React.Component {
         />
         </View>
 
-          <View style={styles.inputRowSocial}>
+        <View style={styles.inputRowSocial}>
         <Icon name='web' type='material-community' iconStyle={styles.icon} />
-            <FormInput containerStyle={styles.inputContainerIcon}
-          autoCapitalize='none'
-          placeholder="Personal Website"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.homepage}
+            <FormInput containerStyle={styles.inputContainerIcon} autoCapitalize='none' placeholder="Personal Website" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.homepage}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -298,8 +214,7 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({hp_sw: isSwitchOn}))
@@ -310,11 +225,7 @@ class Profile extends React.Component {
 
           <View style={styles.inputRowSocial}>
         <Icon name='github-circle' type='material-community' iconStyle={styles.icon} />
-            <FormInput containerStyle={styles.inputContainerIcon}
-          autoCapitalize='none'
-          placeholder="Github (username)"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.github}
+            <FormInput containerStyle={styles.inputContainerIcon} autoCapitalize='none' placeholder="Github (username)" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.github}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -322,8 +233,7 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }} 
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({gh_sw: isSwitchOn}))
@@ -332,16 +242,10 @@ class Profile extends React.Component {
         />
         </View>
 
-
-
         {/* Email */}
         <FormLabel labelStyle={styles.label}>Email</FormLabel>
-
         <View style={styles.inputRow}>
-            <FormInput containerStyle={styles.inputContainer}
-          placeholder="Personal Email"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.homeemail}
+            <FormInput containerStyle={styles.inputContainer} placeholder="Personal Email" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.homeemail}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -350,8 +254,7 @@ class Profile extends React.Component {
           }}
         />
 
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({hemail_sw: isSwitchOn}))
@@ -361,10 +264,7 @@ class Profile extends React.Component {
         </View>
 
         <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="Work / School Email"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.workemail}
+        <FormInput containerStyle={styles.inputContainer} placeholder="Work / School Email" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.workemail}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -372,8 +272,7 @@ class Profile extends React.Component {
             }))
           }}
         />
-        <Switch
-          trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }} 
           onValueChange={isSwitchOn => {
             this.setState({isSwitchOn});
             this.props.dispatch(setProfile({wemail_sw: isSwitchOn}))
@@ -385,9 +284,8 @@ class Profile extends React.Component {
         {/* Birthday */}
 
         <View style={styles.inputRow}>
-          <FormLabel containerStyle={{ width: '85%'}} labelStyle={styles.label}>Birthday (all fields required)</FormLabel>
-            <Switch
-            trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
+        <FormLabel containerStyle={{ flex: 1, paddingTop: 10}} labelStyle={styles.label}>Birthday (all fields required)</FormLabel>
+        <Switch trackColor={{ true: theme.colors.switchOn, false: theme.colors.switchOff }}
             onValueChange={isSwitchOn => {
               this.setState({isSwitchOn});
               this.props.dispatch(setProfile({bday_sw: isSwitchOn}))
@@ -397,10 +295,7 @@ class Profile extends React.Component {
 
         </View>
         <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="Month (MM)"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.bmonth}
+        <FormInput containerStyle={styles.inputContainer} placeholder="Month (MM)" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.bmonth}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -411,10 +306,7 @@ class Profile extends React.Component {
         </View>
 
         <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="Day (DD)"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.bday}
+        <FormInput containerStyle={styles.inputContainer} placeholder="Day (DD)" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.bday}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -425,10 +317,7 @@ class Profile extends React.Component {
         </View>
 
         <View style={styles.inputRow}>
-        <FormInput containerStyle={styles.inputContainer}
-          placeholder="Year (YYYY)"
-          placeholderTextColor={theme.colors.placeholderTextColor}
-          defaultValue= {this.props.profile.byear}
+        <FormInput containerStyle={styles.inputContainer} placeholder="Year (YYYY)" placeholderTextColor={theme.colors.placeholderTextColor} defaultValue= {this.props.profile.byear}
           onChangeText={(text) => {
             this.setState({text});
             this.props.dispatch(setProfile({
@@ -445,20 +334,16 @@ class Profile extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
   label: {
     fontSize: 16,
     color: '#2B95A3'
   },
-
   inputContainer: {
     flex: 1
   },
-
   inputContainerIcon: {
     flex: 1,
   },
-
   inputRow: {
     flexBasis: 80,
     flexDirection: 'row',
@@ -466,7 +351,6 @@ const styles = StyleSheet.create({
     paddingTop: 3,
     color: 'red'  
   },
-
   inputRowSocial: {
     flexBasis: 80,
     flexDirection: 'row',
@@ -474,11 +358,9 @@ const styles = StyleSheet.create({
     paddingTop: 3,
     paddingLeft: 10
   },
-
   icon: {
     color: '#FF9406'
   }
-
 });
 
 // Connect component to Redux store
