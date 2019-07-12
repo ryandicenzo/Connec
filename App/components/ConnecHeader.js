@@ -4,7 +4,6 @@ import { Header } from 'react-native-elements';
 import { Constants, Font } from 'expo';
 
 
-
 export default class ConnecHeader extends Component {
     state = {
         fontLoaded: false,
