@@ -2,7 +2,7 @@
   "expo": {
     "name": "Connec",
     "description": "Connec lets you instantly share your contact information and social media profile with anyone.",
-    "slug": "connec",
+    "slug": "connec_v1",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [
