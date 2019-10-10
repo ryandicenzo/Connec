@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Header } from 'react-native-elements';
-import { Constants, Font } from 'expo';
+import * as Font from 'expo-font';
+import Constants from 'expo-constants';
 
 
 export default class ConnecHeader extends Component {

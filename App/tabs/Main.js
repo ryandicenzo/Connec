@@ -1,7 +1,8 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
-import { LinearGradient, FileSystem } from 'expo';
+import * as FileSystem from 'expo-file-system';
+import { LinearGradient } from 'expo-linear-gradient';
 import AppIntroSlider from 'react-native-app-intro-slider';
 
 import { connect } from 'react-redux';

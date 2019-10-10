@@ -9,22 +9,26 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^33.0.0",
-    "react": "16.8.3",
+    "expo": "^33.0.7",
+    "expo-constants": "~5.0.1",
+    "expo-file-system": "~5.0.1",
+    "expo-linear-gradient": "~5.0.1",
+    "react": "^16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-app-intro-slider": "^2.0.1",
-    "react-native-camera": "^1.6.4",
+    "react-native-camera": "^1.13.1",
     "react-native-contacts": "^2.2.5",
     "react-native-elements": "^0.19.1",
-    "react-native-qrcode": "^0.2.7",
+    "react-native-qrcode-svg": "^5.2.0",
     "react-native-share": "^1.2.1",
+    "react-native-svg": "~9.4.0",
     "react-native-vector-icons": "^6.6.0",
-    "react-navigation": "^2.18.2",
+    "react-navigation": "^2.18.3",
     "react-redux": "^5.1.2",
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "vcard-generator": "0.0.7",
-    "vcards-js": "^2.9.0"
+    "vcards-js": "^2.10.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.2.0"

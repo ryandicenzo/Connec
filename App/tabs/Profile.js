@@ -7,7 +7,7 @@ import { Text, Icon, FormLabel, FormInput } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import { set as setProfile } from '../redux/profile/actions';
-import { Constants } from 'expo';
+import Constants from 'expo-constants';
 import ConnecHeader from '../components/ConnecHeader.js'
 
 const theme = {
@@ -106,7 +106,7 @@ class Profile extends React.Component {
         <View style={styles.inputRowSocial}>
             <Icon name='facebook' type='material-community' iconStyle={styles.icon}/>
             <View style={{ flex: 1 }}>
-              <FormInput containerStyle={styles.inputContainerIcon} autoCapitalize='none' placeholderTextColor={theme.colors.placeholderTextColor} placeholder="Facebook (link:facebook.com/first.last.#)" defaultValue={this.props.profile.facebook}
+              <FormInput containerStyle={styles.inputContainerIcon} autoCapitalize='none' placeholderTextColor={theme.colors.placeholderTextColor} placeholder="Facebook (username)" defaultValue={this.props.profile.facebook}
                 onChangeText={(text) => {
                   this.setState({ text });
                   this.props.dispatch(setProfile({

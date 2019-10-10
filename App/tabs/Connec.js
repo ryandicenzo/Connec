@@ -1,13 +1,17 @@
 import React from 'react';
 import { View, Share, StyleSheet, Platform, Dimensions } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
-import { Icon } from 'react-native-elements';
+import { Text, Icon } from 'react-native-elements';
 // Create QR code for a string
-import QRCode from 'react-native-qrcode';
+// Comment out react-native-qrcode to test new library
+//import QRCode from 'react-native-qrcode';
+import QRCode from 'react-native-qrcode-svg';
 // Connect components to Redux
 import { connect } from 'react-redux';
 // import vcard from 'vcard-generator'
-import { FileSystem, Constants, IntentLauncherAndroid } from 'expo';
+import { IntentLauncherAndroid } from 'expo';
+import * as FileSystem from 'expo-file-system';
+import Constants from 'expo-constants'
 import ConnecHeader from '../components/ConnecHeader.js';
 
 const theme = {
@@ -52,7 +56,7 @@ class Connec extends React.Component {
       var bmonth = helper(info.bday_sw, info.bmonth)
       var bday = helper(info.bday_sw, info.bday)
       var twitter = helper(info.tw_sw, 'www.twitter.com/' + info.twitter)
-      var facebook = helper(info.fb_sw, info.facebook)
+      var facebook = helper(info.fb_sw, 'www.facebook.com/' + info.facebook)
       var linkedin = helper(info.li_sw, 'www.linkedin.com/in/' + info.linkedin)
       var snapchat = helper(info.sc_sw, 'www.snapchat.com/add/' + info.snapchat)
       var instagram = helper(info.ig_sw, 'instagram.com/' + info.instagram)
@@ -88,8 +92,8 @@ class Connec extends React.Component {
 
       // Save .vcf file to be shared
 
-      Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', contact.getFormattedString())
-      Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + "_initial.vcf", "")
+      FileSystem.writeAsStringAsync(FileSystem.documentDirectory + this.fname + '_' + this.lname + '.vcf', contact.getFormattedString())
+      FileSystem.writeAsStringAsync(FileSystem.documentDirectory + "_initial.vcf", "")
 
       return contact.getFormattedString()
     }

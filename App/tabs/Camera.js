@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Dimensions, Text, View, StatusBar, StyleSheet, Share } from 'react-native';
-import { BarCodeScanner, Permissions, FileSystem } from 'expo';
+import * as FileSystem from 'expo-file-system';
+import * as Permissions from 'expo-permissions';
+import { BarCodeScanner } from 'expo-barcode-scanner';
 
 export default class App extends Component {
   state = {
@@ -64,7 +66,7 @@ export default class App extends Component {
 
   // Handle new vCard String
   _handleNewCode = (vstring) => {
-    Expo.FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'savedfile.vcf', vstring);
+    FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'savedfile.vcf', vstring);
     const result = Share.share({
       url:
       FileSystem.documentDirectory + 'savedfile.vcf', title: 'share',
