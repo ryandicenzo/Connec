@@ -3,8 +3,6 @@ import { View, Share, StyleSheet, Platform, Dimensions } from 'react-native';
 // Header: https://react-native-training.github.io/react-native-elements/docs/0.19.1/header.html
 import { Text, Icon } from 'react-native-elements';
 // Create QR code for a string
-// Comment out react-native-qrcode to test new library
-//import QRCode from 'react-native-qrcode';
 import QRCode from 'react-native-qrcode-svg';
 // Connect components to Redux
 import { connect } from 'react-redux';
