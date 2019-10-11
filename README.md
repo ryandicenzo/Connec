@@ -1,5 +1,6 @@
 # Connec
-Connec is a cross-platform mobile application powered by React Native and Expo. Connec lets people instantly share contact information and social media profiles with others via a scannable QR code that works with all iPhones and many Android devices.
+Connec lets people instantly share contact information and social media profiles with others via a scannable QR code that works with all iPhones and many Android devices—recipients do not need to have Connec installed. Connec is a cross-platform mobile application powered by React Native and Expo. Connec was created by Brendon Wong and Ryan Dicenzo and is actively maintained.
+
 
 ![Home Page](/profile_page.png?raw=true "Home Page")
 
