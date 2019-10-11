@@ -28,7 +28,9 @@
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "vcard-generator": "0.0.7",
-    "vcards-js": "^2.10.0"
+    "vcards-js": "^2.10.0",
+    "expo-barcode-scanner": "~5.0.1",
+    "expo-permissions": "~5.0.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.2.0"

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Dimensions, Text, View, StatusBar, StyleSheet, Share } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import * as Permissions from 'expo-permissions';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-export default class App extends Component {
+export default class App extends React.Component {
   state = {
     hasCameraPermission: null,
-    lastScannedUrl: null,
+    lastScannedUrl: null
   };
 
   // On mounting, request for camera permission.
@@ -71,27 +71,26 @@ export default class App extends Component {
       url:
       FileSystem.documentDirectory + 'savedfile.vcf', title: 'share',
       excludedActivityTypes:
-       [ 'com.apple.UIKit.activity.SaveToCameraRoll',
-    "com.apple.UIKit.activity.PostToFacebook",
-    "com.apple.UIKit.activity.PostToTwitter",
-    "com.apple.UIKit.activity.PostToWeibo",
-    "com.apple.UIKit.activity.Message",
-    "com.apple.UIKit.activity.Mail",
-    "com.apple.UIKit.activity.Print",
-    "com.apple.UIKit.activity.CopyToPasteboard",
-    //"com.apple.UIKit.activity.AssignToContact",
-    "com.apple.UIKit.activity.SaveToCameraRoll",
-    "com.apple.UIKit.activity.AddToReadingList",
-    "com.apple.UIKit.activity.PostToFlickr",
-    "com.apple.UIKit.activity.PostToVimeo",
-    "com.apple.UIKit.activity.PostToTencentWeibo",
-    "com.apple.UIKit.activity.AirDrop",
-    "com.apple.UIKit.activity.OpenInIBooks",
-    "com.apple.UIKit.activity.MarkupAsPDF",
-    "com.apple.reminders.RemindersEditorExtension", //Reminders
-    "com.apple.mobilenotes.SharingExtension", // Notes
-    "com.apple.mobileslideshow.StreamShareService", // iCloud Photo Sharing - This also does nothing :{
-
+       ["com.apple.UIKit.activity.SaveToCameraRoll",
+        "com.apple.UIKit.activity.PostToFacebook",
+        "com.apple.UIKit.activity.PostToTwitter",
+        "com.apple.UIKit.activity.PostToWeibo",
+        "com.apple.UIKit.activity.Message",
+        "com.apple.UIKit.activity.Mail",
+        "com.apple.UIKit.activity.Print",
+        "com.apple.UIKit.activity.CopyToPasteboard",
+        //"com.apple.UIKit.activity.AssignToContact",
+        "com.apple.UIKit.activity.SaveToCameraRoll",
+        "com.apple.UIKit.activity.AddToReadingList",
+        "com.apple.UIKit.activity.PostToFlickr",
+        "com.apple.UIKit.activity.PostToVimeo",
+        "com.apple.UIKit.activity.PostToTencentWeibo",
+        "com.apple.UIKit.activity.AirDrop",
+        "com.apple.UIKit.activity.OpenInIBooks",
+        "com.apple.UIKit.activity.MarkupAsPDF",
+        "com.apple.reminders.RemindersEditorExtension", //Reminders
+        "com.apple.mobilenotes.SharingExtension", // Notes
+        "com.apple.mobileslideshow.StreamShareService", // iCloud Photo Sharing - This also does nothing :{
     ]
     }).then(({action, activityType}) => {
       // Handle Share Dismissed
