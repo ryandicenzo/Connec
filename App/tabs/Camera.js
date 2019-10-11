@@ -7,7 +7,7 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 export default class App extends React.Component {
   state = {
     hasCameraPermission: null,
-    lastScannedUrl: null
+    lastScannedUrl: false,
   };
 
   // On mounting, request for camera permission.
@@ -37,13 +37,13 @@ export default class App extends React.Component {
       // Permission GUI
       <View style={styles.container}>
         {this.state.hasCameraPermission === null
-          ? <Text>Requesting for camera permission</Text>
+          ? <Text>Requesting camera permission</Text>
           : this.state.hasCameraPermission === false
               ? <Text style={{ color: '#fff' }}>
                   Camera permission is not granted
                 </Text>
               : <BarCodeScanner
-                  onBarCodeRead={this._handleBarCodeRead}
+                  onBarCodeScanned={this._handleBarCodeRead}
                   style={{
                     height: Dimensions.get('window').height,
                     width: Dimensions.get('window').width,
@@ -56,7 +56,7 @@ export default class App extends React.Component {
 
         <View style={styles.bottomBar}>
           <Text style ={styles.label}>
-          Scan a generated contact and press: Copy to Contacts.
+          Scan a QR code and press: Copy to Contacts.
           </Text>
         </View>
 
@@ -68,40 +68,10 @@ export default class App extends React.Component {
   _handleNewCode = (vstring) => {
     FileSystem.writeAsStringAsync(FileSystem.documentDirectory + 'savedfile.vcf', vstring);
     const result = Share.share({
-      url:
-      FileSystem.documentDirectory + 'savedfile.vcf', title: 'share',
-      excludedActivityTypes:
-       ["com.apple.UIKit.activity.SaveToCameraRoll",
-        "com.apple.UIKit.activity.PostToFacebook",
-        "com.apple.UIKit.activity.PostToTwitter",
-        "com.apple.UIKit.activity.PostToWeibo",
-        "com.apple.UIKit.activity.Message",
-        "com.apple.UIKit.activity.Mail",
-        "com.apple.UIKit.activity.Print",
-        "com.apple.UIKit.activity.CopyToPasteboard",
-        //"com.apple.UIKit.activity.AssignToContact",
-        "com.apple.UIKit.activity.SaveToCameraRoll",
-        "com.apple.UIKit.activity.AddToReadingList",
-        "com.apple.UIKit.activity.PostToFlickr",
-        "com.apple.UIKit.activity.PostToVimeo",
-        "com.apple.UIKit.activity.PostToTencentWeibo",
-        "com.apple.UIKit.activity.AirDrop",
-        "com.apple.UIKit.activity.OpenInIBooks",
-        "com.apple.UIKit.activity.MarkupAsPDF",
-        "com.apple.reminders.RemindersEditorExtension", //Reminders
-        "com.apple.mobilenotes.SharingExtension", // Notes
-        "com.apple.mobileslideshow.StreamShareService", // iCloud Photo Sharing - This also does nothing :{
-    ]
+      url: FileSystem.documentDirectory + 'savedfile.vcf'
     }).then(({action, activityType}) => {
-      // Handle Share Dismissed
-    if(action === Share.dismissedAction)
-      this.setState({ lastScannedUrl: '' }); // Set last scan to empty string, so user can scan again.
-
+      this.setState({ lastScannedUrl: false }); // Set last scan to false, so user can scan again.
     });
-  };
-
-  _handlePressCancel = () => {
-    this.setState({ lastScannedUrl: null });
   };
 
 // Check if scan is new
