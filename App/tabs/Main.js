@@ -4,6 +4,7 @@ import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import { LinearGradient } from 'expo-linear-gradient';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { connect } from 'react-redux';
 
@@ -70,17 +71,21 @@ export class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loaded: false, showRealApp: false, savedContact: false };
+  }
 
-    var savedContact = FileSystem.readAsStringAsync(FileSystem.documentDirectory + "_initial.vcf").then(({ uri }) => {
-      this.setState({loaded : 'true'})
-      this.setState({showRealApp : 'true'})
-      this.setState({savedContact : 'true'})
-        })
-    .catch(error => {      
-      this.setState({loaded : 'true'})
-      this.setState({showRealApp : 'false'})
+  componentDidMount = () => {
+    //checks if this is the initial launch of the app
+    AsyncStorage.getItem('alreadyLaunched').then(value => {
+      if (value == null) {
+        AsyncStorage.setItem('alreadyLaunched', 'true');
+        this.setState({showRealApp: 'false'});
+      }
+      else {
+        this.setState({showRealApp: 'true'});
+        this.setState({savedContact : 'true'});
+      }
     });
-
+    this.setState({loaded: 'true'});
   }
 
   _renderItem = props => (
